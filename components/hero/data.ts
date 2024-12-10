@@ -10,10 +10,10 @@ export const hero_slider_text = [
   "Digital Artists",
 ];
 
-export const hero_mockup_nav_actions = [
-  "frames",
-  "feed",
-  "resources",
-  "connect",
-  "jobs",
-] as const;
+export const hero_mockup_nav_actions = {
+  frames: "#6423EC",
+  feed: "#EC2378",
+  resources: "#238CEC",
+  connect: "#23ECEC",
+  jobs: "#A0EC23",
+} as const;
