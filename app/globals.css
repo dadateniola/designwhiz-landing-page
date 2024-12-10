@@ -106,11 +106,11 @@
   filter: blur(12px);
   background: var(--color);
   border-radius: 9999px;
-  transition: opacity 0.3s;
+  transition: 0.3s;
   z-index: -1;
 }
 
-.hero-mockup-nav-action-shadow.active,
+.hero-mockup-nav-action-shadow.active::before,
 .hero-mockup-nav-action-shadow:hover::before {
   opacity: 0.5;
 }

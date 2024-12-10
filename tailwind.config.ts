@@ -9,9 +9,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-
         text: {
           sub: "#344054",
           weak: "#98A2B3",
@@ -20,6 +17,8 @@ export default {
 
         neutral: {
           0: "#FDFEFF",
+          100: "#F0F2F5",
+          400: "#98a2b3",
           700: "#1D2739",
         },
 
@@ -29,8 +28,17 @@ export default {
 
         purple: {
           0: "#F0EFFC",
+          600: "#5522C0",
 
           base: "#6C50E0",
+        },
+
+        background: {
+          canvas: "#FDFEFF",
+        },
+
+        grey: {
+          500: "#667185",
         },
       },
     },

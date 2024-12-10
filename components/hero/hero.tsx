@@ -71,20 +71,24 @@ const Hero = () => {
         <HeroPreview />
       </div>
       <HeroCloudSeparator />
-      <div className="w-full h-screen flex items-center justify-center">
-        <div className="custom-flex-col gap-[56px]">
-          <h1
-            className={clsx(
-              inter_tight.className,
-              "text-[rgba(0,0,0,0.90)] text-[56px] font-medium text-center leading-[56px] -tracking-[0.5px]"
-            )}
-          >
-            All the resources you can find
-            <br />
-            to be a better designer
-          </h1>
-          <HeroMockup />
+      <div className="w-full custom-flex-col gap-[224px]">
+        <div></div>
+        <div className="flex justify-center">
+          <div className="custom-flex-col gap-[56px]">
+            <h1
+              className={clsx(
+                inter_tight.className,
+                "text-[rgba(0,0,0,0.90)] text-[56px] font-medium text-center leading-[56px] -tracking-[0.5px]"
+              )}
+            >
+              All the resources you can find
+              <br />
+              to be a better designer
+            </h1>
+            <HeroMockup />
+          </div>
         </div>
+        <div></div>
       </div>
     </div>
   );
