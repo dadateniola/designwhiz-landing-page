@@ -1,7 +1,7 @@
 // Types
-import type { SVGPrps } from "./types";
+import type { SVGProps } from "./types";
 
-export const DesignWhizLogo: React.FC<SVGPrps> = ({ size = 20 }) => (
+export const DesignWhizLogo: React.FC<SVGProps> = ({ size = 20 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -415,7 +415,7 @@ export const DesignWhizLogo: React.FC<SVGPrps> = ({ size = 20 }) => (
   </svg>
 );
 
-export const LaunchVideoPlayIcon: React.FC<SVGPrps> = ({ size = 20 }) => (
+export const LaunchVideoPlayIcon: React.FC<SVGProps> = ({ size = 20 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -427,6 +427,24 @@ export const LaunchVideoPlayIcon: React.FC<SVGPrps> = ({ size = 20 }) => (
       d="M14.2666 9.10426L7.8076 5.06617C7.64762 4.96649 7.46389 4.91139 7.27546 4.90659C7.08703 4.90179 6.90074 4.94746 6.73589 5.03887C6.57105 5.13028 6.43364 5.2641 6.33791 5.42648C6.24217 5.58885 6.19159 5.77386 6.19141 5.96236V14.0357C6.19141 14.8643 7.10474 15.3709 7.8076 14.9309L14.2647 10.8938C14.417 10.7993 14.5427 10.6676 14.6299 10.511C14.7171 10.3545 14.763 10.1783 14.7631 9.99908C14.7633 9.81988 14.7178 9.64359 14.631 9.48685C14.5441 9.33012 14.4187 9.19812 14.2666 9.10331"
       fill="black"
       fillOpacity="0.6"
+    />
+  </svg>
+);
+
+export const FramesIcon: React.FC<SVGProps> = ({ size = 18 }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 19 18"
+    fill="none"
+  >
+    <path
+      d="M3.875 16.5V12.75M3.875 5.25V1.5M2 3.375H5.75M2 14.625H5.75M10.25 2.25L8.94937 5.63165C8.73786 6.18157 8.6321 6.45653 8.46765 6.68781C8.32189 6.8928 8.1428 7.07189 7.93781 7.21765C7.70653 7.3821 7.43157 7.48786 6.88165 7.69937L3.5 9L6.88165 10.3006C7.43157 10.5121 7.70653 10.6179 7.93782 10.7824C8.1428 10.9281 8.32189 11.1072 8.46765 11.3122C8.6321 11.5435 8.73786 11.8184 8.94937 12.3684L10.25 15.75L11.5506 12.3684C11.7621 11.8184 11.8679 11.5435 12.0324 11.3122C12.1781 11.1072 12.3572 10.9281 12.5622 10.7824C12.7935 10.6179 13.0684 10.5121 13.6184 10.3006L17 9L13.6184 7.69937C13.0684 7.48786 12.7935 7.3821 12.5622 7.21765C12.3572 7.07189 12.1781 6.8928 12.0324 6.68782C11.8679 6.45653 11.7621 6.18157 11.5506 5.63165L10.25 2.25Z"
+      stroke="#344054"
+      stroke-width="1.66667"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );

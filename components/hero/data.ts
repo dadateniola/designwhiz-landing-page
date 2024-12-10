@@ -9,3 +9,11 @@ export const hero_slider_text = [
   "Everyone",
   "Digital Artists",
 ];
+
+export const hero_mockup_nav_actions = [
+  "frames",
+  "feed",
+  "resources",
+  "connect",
+  "jobs",
+] as const;

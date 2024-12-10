@@ -7,6 +7,7 @@ import { LaunchVideoPlayIcon } from "../svg/svg";
 // Imports
 import clsx from "clsx";
 import CTA from "../cta/cta";
+import HeroMockup from "./hero-mockup";
 import HeroPreview from "./hero-preview";
 import { hero_slider_text } from "./data";
 import HeroTextSlider from "./hero-text-slider";
@@ -70,7 +71,21 @@ const Hero = () => {
         <HeroPreview />
       </div>
       <HeroCloudSeparator />
-      <div className="w-full h-[50vh]"></div>
+      <div className="w-full h-screen flex items-center justify-center">
+        <div className="custom-flex-col gap-[56px]">
+          <h1
+            className={clsx(
+              inter_tight.className,
+              "text-[rgba(0,0,0,0.90)] text-[56px] font-medium text-center leading-[56px] -tracking-[0.5px]"
+            )}
+          >
+            All the resources you can find
+            <br />
+            to be a better designer
+          </h1>
+          <HeroMockup />
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,3 +1,3 @@
-export interface SVGPrps {
+export interface SVGProps {
   size?: number;
 }
