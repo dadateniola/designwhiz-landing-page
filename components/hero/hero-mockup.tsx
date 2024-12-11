@@ -17,7 +17,7 @@ const HeroMockup = () => {
 
   return (
     <HeroMockupContext.Provider value={{ activeAction, setActiveAction }}>
-      <div className="flex flex-col items-center gap-12">
+      <div className="flex flex-col items-center gap-6 md:gap-12">
         <div
           className="p-2 bg-white rounded-2xl"
           style={{ width: "min(918px, 90dvw)" }}
@@ -29,7 +29,7 @@ const HeroMockup = () => {
                 "0px -8.384px 6.707px -3.478px #E2E3F2 inset, -39.334px 39.334px 62.934px -1.573px rgba(0, 0, 0, 0.08)",
             }}
           >
-            <div className="w-full aspect-video flex">
+            <div className="w-full aspect-[4/3] sm:aspect-video flex">
               <HeroMockupSidebar />
               <HeroMockupPreview />
             </div>

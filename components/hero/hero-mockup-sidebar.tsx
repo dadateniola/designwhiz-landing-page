@@ -26,21 +26,32 @@ const HeroMockupSidebar = () => {
   const { activeAction, setActiveAction } = useHeroMockupContext();
 
   return (
-    <div className="relative pl-5 pb-10 w-[172px] border-r border-solid border-neutral-100 flex flex-col justify-between">
-      <div className="custom-flex-col gap-3">
-        <div className="py-[13px] pr-4 flex items-center gap-1 border-b border-solid border-neutral-100">
+    <div
+      className={clsx(
+        "relative z-[2] border-r border-solid border-neutral-100 flex flex-col justify-between",
+        "pl-2 sm:pl-3 md:pl-5 md:pb-10",
+        "w-[80px] sm:w-[100px] md:w-[150px] lg:w-[172px]"
+      )}
+    >
+      <div className="custom-flex-col gap-1 sm:gap-3">
+        <div
+          className={clsx(
+            "py-[6px] sm:py-[10px] lg:py-[13px] pr-4 flex items-center gap-1 border-b border-solid border-neutral-100",
+            "[&>svg]:w-[8px] sm:[&>svg]:w-[10px] lg:[&>svg]:w-auto [&>svg]:h-[9px] sm:[&>svg]:h-[11px] lg:[&>svg]:h-auto"
+          )}
+        >
           <DesignWhizLogo size={12} />
           <p
             className={clsx(
               kanit.className,
-              "text-xs text-purple-base font-normal leading-3 -tracking-[0.627px]"
+              "text-[8px] sm:text-[10px] lg:text-xs text-purple-base font-normal leading-3 -tracking-[0.627px]"
             )}
           >
             Designwhiz
           </p>
         </div>
         <div className="custom-flex-col gap-3 pr-4">
-          <div className="custom-flex-col gap-[2px]">
+          <div className="custom-flex-col md:gap-[2px]">
             {hero_mockup_sidebar_actions.map((action) => {
               const isNavAction = action in hero_mockup_nav_actions;
 
@@ -58,9 +69,9 @@ const HeroMockupSidebar = () => {
               );
             })}
           </div>
-          <div className="border-b border-solid border-neutral-100"></div>
+          <div className="hidden md:block border-b border-solid border-neutral-100"></div>
           <div
-            className="p-[2px] rounded-full border border-solid border-purple-base bg-white pointer-events-none"
+            className="hidden md:block p-[2px] rounded-full border border-solid border-purple-base bg-white pointer-events-none"
             style={{
               boxShadow:
                 "0px 0.522px 1.567px 0px rgba(11, 19, 36, 0.07), 0px -0.522px 0px 0px rgba(0, 0, 0, 0.12) inset",
@@ -84,7 +95,7 @@ const HeroMockupSidebar = () => {
           </div>
         </div>
       </div>
-      <div className="custom-flex-col gap-[6px]">
+      <div className="hidden lg:flex flex-col gap-[6px]">
         <div className="flex items-center gap-1 text-[8px] text-grey-500 font-normal">
           <p className="text-text-sub font-semibold">DesignWhiz</p>
           <p>-</p>
@@ -127,7 +138,7 @@ const HeroMockupSidebar = () => {
           />
         </div>
       </div>
-      <div className="absolute bottom-14 right-0 translate-x-2/4 w-[17px] h-[17px] custom-flex-center rounded-full border border-solid border-neutral-100 bg-white">
+      <div className="hidden sm:flex items-center justify-center absolute bottom-14 right-0 translate-x-2/4 w-[17px] h-[17px] rounded-full border border-solid border-neutral-100 bg-white">
         <SidebarDoubleArrow size={10} />
       </div>
     </div>

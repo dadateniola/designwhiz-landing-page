@@ -75,7 +75,9 @@ export const HeroMockupNavButton: React.FC<HeroMockupNavButtonProps> = ({
       } as CSSProperties
     }
     className={clsx(
-      "hero-mockup-nav-action-shadow py-3 px-4 flex items-center gap-3 rounded-full",
+      "hero-mockup-nav-action-shadow flex items-center gap-1 sm:gap-2 md:gap-3 rounded-full",
+      "py-[6px] sm:py-3 px-2 sm:px-4",
+      "[&>svg]:w-3 sm:[&>svg]:w-4 md:[&>svg]:w-auto [&>svg]:h-3 sm:[&>svg]:h-4 md:[&>svg]:h-auto",
       {
         active,
         "text-text-sub": !active,
@@ -84,7 +86,14 @@ export const HeroMockupNavButton: React.FC<HeroMockupNavButtonProps> = ({
     )}
   >
     <HeroMockupIcons action={action} />
-    <p className="text-sm font-medium leading-5 capitalize">{action}</p>
+    <p
+      className={clsx(
+        "font-medium leading-5 capitalize",
+        "text-[10px] sm:text-[12px] md:text-sm"
+      )}
+    >
+      {action}
+    </p>
   </button>
 );
 
@@ -92,16 +101,20 @@ export const HeroMockupSidebarButton: React.FC<
   HeroMockupSidebarButtonProps
 > = ({ active, action, onClick }) => {
   const isNavAction = action in hero_mockup_nav_actions;
-  const class_styles = clsx("py-[6px] flex items-center gap-[6px] group", {
-    "text-text-sub": !active,
-    "text-purple-base": active,
-    "pointer-events-none": !isNavAction,
-  });
+  const class_styles = clsx(
+    "py-1 sm:py-[6px] flex items-center gap-[6px] group",
+    "[&>svg]:w-[8px] [&>svg]:h-[8px] sm:[&>svg]:w-auto sm:[&>svg]:h-auto",
+    {
+      "text-text-sub": !active,
+      "text-purple-base": active,
+      "pointer-events-none": !isNavAction,
+    }
+  );
   const content = (
     <>
       <HeroMockupIcons size={10} action={action} />
       <p
-        className={clsx("text-[8px] leading-3 capitalize", {
+        className={clsx("text-[6px] md:text-[8px] leading-3 capitalize", {
           "font-medium": !active,
           "font-semibold": active,
           "group-hover:font-semibold": !active && isNavAction,

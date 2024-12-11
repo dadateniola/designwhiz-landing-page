@@ -19,7 +19,7 @@ const Hero = () => {
   return (
     <div id="home">
       <div
-        className="w-full min-h-screen px-5 sm:px-10 custom-flex-col gap-[120px]"
+        className="w-full min-h-[95vh] px-5 sm:px-10 custom-flex-col gap-[120px] justify-between overflow-hidden"
         style={{
           background:
             "linear-gradient(180deg, rgba(128, 47, 209, 0.00) 27.86%, rgba(156, 83, 250, 0.37) 247.43%), #FFF",
@@ -79,14 +79,14 @@ const Hero = () => {
             className="w-full h-full"
             style={{
               background:
-                "linear-gradient(0deg, #F1EDFC 45.53%, rgba(255, 255, 255, 0.00) 117.68%)",
+                "linear-gradient(to bottom, transparent 0%, #F1EDFC 45.53%, rgba(255, 255, 255, 0.00) 117.68%)",
             }}
           ></div>
         </div>
-        <div className="relative z-[2] w-full custom-flex-col gap-[224px]">
+        <div className="relative z-[2] w-full min-h-screen custom-flex-col gap-[100px] sm:gap-[224px] justify-between">
           <div></div>
           <div className="flex justify-center">
-            <div className="custom-flex-col gap-[56px]">
+            <div className="custom-flex-col gap-10 md:gap-[56px]">
               <h1
                 className={clsx(
                   inter_tight.className,

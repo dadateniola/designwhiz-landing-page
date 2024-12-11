@@ -110,7 +110,12 @@
   z-index: -1;
 }
 
-.hero-mockup-nav-action-shadow.active::before,
-.hero-mockup-nav-action-shadow:hover::before {
+.hero-mockup-nav-action-shadow.active::before {
   opacity: 0.5;
+}
+
+@media (hover: hover) {
+  .hero-mockup-nav-action-shadow:hover::before {
+    opacity: 0.5;
+  }
 }

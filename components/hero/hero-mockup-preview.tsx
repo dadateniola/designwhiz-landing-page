@@ -36,7 +36,7 @@ const HeroMockupPreview = () => {
         src={getHeroMockupImage(activeAction)}
         alt={`${activeAction} page`}
         fill
-        sizes="1500px"
+        sizes="(max-width: 768px) 150vw, (max-width: 1024px) 1000px, 1500px"
         className={clsx(
           "object-cover object-top transition-opacity duration-300",
           {

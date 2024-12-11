@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <header
       style={{
-        width: "min(960px, 80dvw)",
+        width: "min(960px, 85%)",
         backdropFilter: "blur(16px)",
         border: "1px solid rgba(0, 0, 0, 0.10)",
         background: "rgba(255, 255, 255, 0.85)",
