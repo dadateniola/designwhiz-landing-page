@@ -31,7 +31,7 @@ const HeroMockupNav = () => {
           })}
         </div>
       </div>
-      <p className="text-[#9298A8] text-xl font-normal text-center leading-[30px] -tracking-[0.4px]">
+      <p className="text-[#9298A8] text-sm md:text-xl font-normal text-center leading-[20px] md:leading-[30px] -tracking-[0.4px]">
         Finally a platform with features intentionally
         <br />
         designed for your growth

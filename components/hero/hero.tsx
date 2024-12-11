@@ -19,7 +19,7 @@ const Hero = () => {
   return (
     <div id="home">
       <div
-        className="w-full min-h-screen px-10 custom-flex-col gap-[120px]"
+        className="w-full min-h-screen px-5 sm:px-10 custom-flex-col gap-[120px]"
         style={{
           background:
             "linear-gradient(180deg, rgba(128, 47, 209, 0.00) 27.86%, rgba(156, 83, 250, 0.37) 247.43%), #FFF",
@@ -42,27 +42,29 @@ const Hero = () => {
               <h1
                 className={clsx(
                   inter_tight.className,
-                  "text-[rgba(0,0,0,0.90)] text-[60px] font-medium text-center leading-[60px] -tracking-[0.5px]"
+                  "text-[rgba(0,0,0,0.90)] font-medium text-center -tracking-[0.5px]",
+                  "text-[30px] sm:text-[40px] md:text-[50px] lg:text-[60px]",
+                  "leading-[30px] sm:leading-[40px] md:leading-[50px] lg:leading-[60px]"
                 )}
               >
                 Welcome to a world built
                 <br />
                 by designers, for designers
               </h1>
-              <div className="flex justify-center">
+              <div className="hidden sm:flex justify-center">
                 <div className="flex items-end gap-1 py-1">
-                  <p className="text-[rgba(0,0,0,0.8)] text-lg font-medium leading-[22px] -tracking-[0.18px]">
+                  <p className="text-[rgba(0,0,0,0.8)] text-base md:text-lg font-medium leading-[19px] md:leading-[22px] -tracking-[0.18px]">
                     DesignWhiz is a creative sanctuary for
                   </p>
                   <HeroTextSlider text={hero_slider_text} />
                 </div>
               </div>
             </div>
-            <div className="flex justify-center gap-[14px]">
-              <CTA type="black" className="w-[192px] h-10">
+            <div className="flex flex-col items-center sm:flex-row justify-center gap-[14px]">
+              <CTA type="black" className="w-[280px] sm:w-[192px] h-10">
                 explore designwhiz
               </CTA>
-              <CTA type="purple" className="w-[192px] h-10">
+              <CTA type="purple" className="w-[280px] sm:w-[192px] h-10">
                 create an account
               </CTA>
             </div>
@@ -71,24 +73,37 @@ const Hero = () => {
         <HeroPreview />
       </div>
       <HeroCloudSeparator />
-      <div className="w-full custom-flex-col gap-[224px]">
-        <div></div>
-        <div className="flex justify-center">
-          <div className="custom-flex-col gap-[56px]">
-            <h1
-              className={clsx(
-                inter_tight.className,
-                "text-[rgba(0,0,0,0.90)] text-[56px] font-medium text-center leading-[56px] -tracking-[0.5px]"
-              )}
-            >
-              All the resources you can find
-              <br />
-              to be a better designer
-            </h1>
-            <HeroMockup />
-          </div>
+      <div className="relative overflow-hidden">
+        <div className="absolute z-[1] top-2/4 left-0 w-full h-full">
+          <div
+            className="w-full h-full"
+            style={{
+              background:
+                "linear-gradient(0deg, #F1EDFC 45.53%, rgba(255, 255, 255, 0.00) 117.68%)",
+            }}
+          ></div>
         </div>
-        <div></div>
+        <div className="relative z-[2] w-full custom-flex-col gap-[224px]">
+          <div></div>
+          <div className="flex justify-center">
+            <div className="custom-flex-col gap-[56px]">
+              <h1
+                className={clsx(
+                  inter_tight.className,
+                  "text-[rgba(0,0,0,0.90)] font-medium text-center -tracking-[0.5px]",
+                  "text-[26px] sm:text-[36px] md:text-[46px] lg:text-[56px]",
+                  "leading-[26px] sm:leading-[36px] md:leading-[46px] lg:leading-[56px]"
+                )}
+              >
+                All the resources you can find
+                <br />
+                to be a better designer
+              </h1>
+              <HeroMockup />
+            </div>
+          </div>
+          <div></div>
+        </div>
       </div>
     </div>
   );

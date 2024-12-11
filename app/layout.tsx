@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 // CSS files
 import "./globals.css";
+import "./media-queries.css";
 
 // Imports
 import clsx from "clsx";

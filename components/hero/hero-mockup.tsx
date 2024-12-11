@@ -18,7 +18,10 @@ const HeroMockup = () => {
   return (
     <HeroMockupContext.Provider value={{ activeAction, setActiveAction }}>
       <div className="flex flex-col items-center gap-12">
-        <div className="w-[918px] p-2 bg-white rounded-2xl">
+        <div
+          className="p-2 bg-white rounded-2xl"
+          style={{ width: "min(918px, 90dvw)" }}
+        >
           <div
             className="w-full border border-solid border-[#F2F2F2] bg-background-canvas rounded-lg overflow-hidden"
             style={{

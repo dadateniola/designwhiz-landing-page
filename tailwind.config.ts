@@ -41,6 +41,9 @@ export default {
           500: "#667185",
         },
       },
+      screens: {
+        navbar: "900px",
+      },
     },
   },
   plugins: [],

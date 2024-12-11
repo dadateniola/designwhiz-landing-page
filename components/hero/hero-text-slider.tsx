@@ -73,7 +73,7 @@ const HeroTextSlider: React.FC<HeroTextSliderProps> = ({ text = [] }) => {
     >
       <div
         ref={containerRef}
-        className="custom-flex-col text-purple-base text-base font-semibold leading-5 italic capitalize"
+        className="custom-flex-col text-purple-base text-sm md:text-base font-semibold leading-5 italic capitalize"
       >
         {text.map((txt, idx) => (
           <p key={idx} ref={idx === 0 ? textRef : null}>
