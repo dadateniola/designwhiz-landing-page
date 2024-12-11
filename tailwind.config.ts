@@ -11,6 +11,7 @@ export default {
       colors: {
         text: {
           sub: "#344054",
+          soft: "#667185",
           weak: "#98A2B3",
           black: "#0C0A14",
         },
@@ -18,6 +19,7 @@ export default {
         neutral: {
           0: "#FDFEFF",
           100: "#F0F2F5",
+          200: "#33274B",
           400: "#98a2b3",
           700: "#1D2739",
         },

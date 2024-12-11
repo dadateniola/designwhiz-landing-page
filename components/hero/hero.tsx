@@ -12,6 +12,7 @@ import HeroPreview from "./hero-preview";
 import { hero_slider_text } from "./data";
 import HeroTextSlider from "./hero-text-slider";
 import { HeroCloudSeparator } from "./hero-components";
+import { benefits_arc_height, section_heading_text_styles } from "@/app/config";
 
 const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
@@ -61,7 +62,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="flex flex-col items-center sm:flex-row justify-center gap-[14px]">
-              <CTA type="black" className="w-[280px] sm:w-[192px] h-10">
+              <CTA type="dark" className="w-[280px] sm:w-[192px] h-10">
                 explore designwhiz
               </CTA>
               <CTA type="purple" className="w-[280px] sm:w-[192px] h-10">
@@ -90,9 +91,8 @@ const Hero = () => {
               <h1
                 className={clsx(
                   inter_tight.className,
-                  "text-[rgba(0,0,0,0.90)] font-medium text-center -tracking-[0.5px]",
-                  "text-[26px] sm:text-[36px] md:text-[46px] lg:text-[56px]",
-                  "leading-[26px] sm:leading-[36px] md:leading-[46px] lg:leading-[56px]"
+                  "text-[rgba(0,0,0,0.90)]",
+                  section_heading_text_styles
                 )}
               >
                 All the resources you can find
@@ -102,7 +102,7 @@ const Hero = () => {
               <HeroMockup />
             </div>
           </div>
-          <div></div>
+          <div className={benefits_arc_height}></div>
         </div>
       </div>
     </div>
