@@ -2,13 +2,21 @@ import Link from "next/link";
 
 // Types
 import type { NavbarCTAProps, NavbarLinkProps } from "./types";
+import clsx from "clsx";
 
-export const NavbarLink: React.FC<NavbarLinkProps> = ({ href, children }) => (
+export const NavbarLink: React.FC<NavbarLinkProps> = ({
+  href,
+  active,
+  children,
+}) => (
   <Link
     href={href}
-    className="navbar-link py-[6px] px-[13px] rounded-full bg-neutral-0 duration-300"
+    className={clsx(
+      "navbar-link py-[6px] px-[13px] rounded-full duration-300 group",
+      { active }
+    )}
   >
-    <p className="text-text-sub text-sm font-medium capitalize -tracking-[0.28px] leading-5">
+    <p className="text-text-weak hover:text-text-soft text-sm font-medium capitalize -tracking-[0.28px] leading-5">
       {children}
     </p>
   </Link>

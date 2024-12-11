@@ -3,19 +3,21 @@ import { Inter_Tight } from "next/font/google";
 
 // Imports
 import clsx from "clsx";
+import { benefits_data } from "./data";
 import BenefitsCard from "./benefits-card";
 import { SectionLabel } from "../global-components";
 import { section_heading_text_styles } from "@/app/config";
 import { BenefitsArcSeparator } from "./benefits-components";
-import { benefits_data } from "./data";
 
 const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
 const Benefits = () => {
   return (
-    <div id="benefits">
+    <section id="benefits">
       <BenefitsArcSeparator />
-      <div className="custom-flex-col gap-[120px] px-[116px] pb-[200px]">
+      <div className={clsx("custom-flex-col gap-[120px]", 
+        "px-4 xs:px-8 lg:px-20 xl:px-[116px] pb-[200px]"
+      )}>
         <div className="flex flex-col items-center gap-4">
           <SectionLabel>DesignWhiz For You</SectionLabel>
           <h1
@@ -39,7 +41,7 @@ const Benefits = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

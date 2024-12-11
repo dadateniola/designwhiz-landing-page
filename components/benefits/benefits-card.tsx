@@ -7,6 +7,7 @@ import type { BenefitsCardProps } from "./types";
 
 // Imports
 import CTA from "../cta/cta";
+import clsx from "clsx";
 
 const BenefitsCard: React.FC<BenefitsCardProps> = ({
   list = [],
@@ -56,18 +57,23 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
   return (
     <div
       ref={containerRef}
-      className="p-4 rounded-3xl bg-white"
+      className="p-4 pb-6 rounded-3xl bg-white"
       style={{
         backdropFilter: "blur(6px)",
         boxShadow:
           "0px 0px 0px 2px #FFF inset, 0px 4px 2px 0px rgba(0, 0, 0, 0.06) inset, 0px 0px 24px 4px rgba(0, 0, 0, 0.04) inset, 0px -10.44px 17.15px -6.67px #E2E3F2 inset",
       }}
     >
-      <div className="flex gap-[85px]">
-        <div className="w-[337px] custom-flex-col gap-8 justify-between">
+      <div className="flex flex-col navbar:flex-row gap-8 xl:gap-[85px]">
+        <div className="w-full navbar:w-[310px] xl:w-[337px] custom-flex-col gap-8 justify-between">
           <div className="p-4 custom-flex-col gap-8">
             <div className="custom-flex-col gap-1">
-              <p className="text-black text-2xl xl:text-[28px] font-medium leading-8">
+              <p
+                className={clsx(
+                  "text-black font-medium leading-8",
+                  "text-xl lg:text-2xl xl:text-[28px]"
+                )}
+              >
                 {heading}
               </p>
               <p className="text-neutral-200 text-base font-normal">
@@ -77,10 +83,12 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
             <div className="custom-flex-col gap-5">
               {list.map(({ desc, title }, idx) => (
                 <div key={idx} className="flex gap-3">
-                  <div className="flex items-start">
-                    <p className="text-text-soft text-sm font-medium">01</p>
+                  <div className="flex items-start w-[18px]">
+                    <p className="text-text-soft text-sm font-medium">
+                      {`${idx + 1}`.padStart(2, "0")}
+                    </p>
                   </div>
-                  <div className="custom-flex-col gap-2">
+                  <div className="flex-1 custom-flex-col gap-2">
                     <p className="text-[#0E0523] text-base font-medium">
                       {title}
                     </p>
@@ -92,11 +100,11 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
               ))}
             </div>
           </div>
-          <CTA type="black" className="py-[10px]">
+          <CTA type="black" className="hidden navbar:flex py-[10px]">
             Get Started
           </CTA>
         </div>
-        <div className="relative flex-1 aspect-[4/3] bg-neutral-100 rounded-[14px] overflow-hidden">
+        <div className="relative flex-1 aspect-video navbar:aspect-[4/3] bg-neutral-100 rounded-[14px] overflow-hidden">
           <video
             loop
             muted
@@ -114,6 +122,12 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
                 "0px 0px 0px 2px rgba(219, 219, 219, 0.38) inset, 0px 4px 2px 0px rgba(0, 0, 0, 0.06) inset, 0px 0px 24px 4px rgba(0, 0, 0, 0.04) inset",
             }}
           ></div>
+        </div>
+        <div className="navbar:hidden custom-flex-col gap-4">
+          <div></div>
+          <CTA type="black" className="py-[14px]" style={{ fontSize: "16px" }}>
+            Get Started
+          </CTA>
         </div>
       </div>
     </div>

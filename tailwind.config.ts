@@ -44,6 +44,7 @@ export default {
         },
       },
       screens: {
+        xs: "500px",
         navbar: "900px",
       },
     },

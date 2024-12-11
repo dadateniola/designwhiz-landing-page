@@ -18,7 +18,7 @@ const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
 const Hero = () => {
   return (
-    <div id="home">
+    <section id="home">
       <div
         className="w-full min-h-[95vh] px-5 sm:px-10 custom-flex-col gap-[120px] justify-between overflow-hidden"
         style={{
@@ -105,7 +105,7 @@ const Hero = () => {
           <div className={benefits_arc_height}></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

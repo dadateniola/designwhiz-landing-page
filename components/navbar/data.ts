@@ -3,4 +3,4 @@ export const navbar_links = {
   benefits: "#benefits",
   testimonials: "#testimonials",
   features: "#features",
-};
+} as const;

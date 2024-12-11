@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 
 // Types
-import type { NavbarProps } from "./types";
+import type { NavbarProps, WebsiteSection } from "./types";
 
 // Images
 import { DesignWhizLogo } from "../svg/svg";
@@ -12,6 +14,33 @@ import { navbar_links } from "./data";
 import { NavbarCTA, NavbarLink } from "./navbar-components";
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
+  const [activeSection, setActiveSection] = useState<WebsiteSection | null>(
+    null
+  );
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id as WebsiteSection);
+          }
+        });
+      },
+      {
+        threshold: [0, 0.5],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
   return (
     <header
       style={{
@@ -34,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       <div className="hidden navbar:flex items-center gap-6">
         <nav className="flex items-center gap-1">
           {Object.entries(navbar_links).map(([text, href]) => (
-            <NavbarLink key={text} href={href}>
+            <NavbarLink key={text} href={href} active={activeSection === text}>
               {text}
             </NavbarLink>
           ))}
