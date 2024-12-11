@@ -5,7 +5,7 @@ import type { SectionLabelProps } from "./types";
 import { LabelStar } from "./svg/svg";
 
 export const SectionLabel: React.FC<SectionLabelProps> = ({ children }) => (
-  <div className="py-[6px] px-3 rounded-full gradient-cta">
+  <div className="py-[6px] px-4 rounded-full gradient-cta">
     <div className="flex items-center gap-1">
       <LabelStar />
       <p className="gradient-cta-text">{children}</p>

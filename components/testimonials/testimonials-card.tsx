@@ -8,19 +8,22 @@ import type { TestimonialsCardProps } from "./types";
 import { TestimonialStar } from "../svg/svg";
 
 // Imports
+import clsx from "clsx";
 import { empty } from "@/app/config";
 import Picture from "../picture/picture";
 
 const TestimonialsCard: React.FC<TestimonialsCardProps> = ({
-  pfp,
-  name,
-  desc,
-  stars = 0,
-  preview = empty,
+  data,
+  spacing,
 }) => {
+  const { pfp, name, desc, stars = 0, preview = empty } = data;
+
   return (
     <div
-      className="w-[350px] p-2 pb-8 rounded-3xl bg-white"
+      className={clsx("w-[350px] h-full p-2 pb-8 rounded-3xl bg-white", {
+        "-translate-y-3": spacing === "up",
+        "translate-y-3": spacing === "down",
+      })}
       style={{
         border: "1px solid #F0F0F0",
         boxShadow:
@@ -34,7 +37,7 @@ const TestimonialsCard: React.FC<TestimonialsCardProps> = ({
           alt="testimonial image"
           className="w-full aspect-video rounded-2xl object-cover"
         />
-        <div className="custom-flex-col justify-between gap-10 flex-1 px-5">
+        <div className="custom-flex-col justify-between gap-7 sm:gap-10 flex-1 px-5">
           <div className="flex flex-col items-center gap-6">
             <div className="flex gap-1">
               {Array.from({ length: 5 }).map((_, idx) => (
@@ -45,14 +48,14 @@ const TestimonialsCard: React.FC<TestimonialsCardProps> = ({
                 />
               ))}
             </div>
-            <p className="text-text-sub text-base text-center font-normal -tracking-[0.32px]">
+            <p className="text-text-sub text-sm sm:text-base text-center font-normal -tracking-[0.32px]">
               {desc}
             </p>
           </div>
           <div className="flex justify-center">
             <div className="flex flex-col items-center gap-2">
               <Picture src={pfp} size={48} className="rounded-xl" />
-              <p className="text-text-sub text-base font-medium capitalize">
+              <p className="text-text-sub text-sm sm:text-base font-medium capitalize">
                 {name}
               </p>
             </div>

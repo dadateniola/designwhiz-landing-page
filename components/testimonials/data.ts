@@ -1,5 +1,5 @@
 // Types
-import type { TestimonialsCardProps } from "./types";
+import type { TestimonialsData } from "./types";
 
 // Images
 // ------ Previews ------
@@ -23,7 +23,7 @@ import PFP7 from "@/public/images/testimonials/profile pictures/pfp (7).png";
 import PFP8 from "@/public/images/testimonials/profile pictures/pfp (8).png";
 import PFP9 from "@/public/images/testimonials/profile pictures/pfp (9).png";
 
-export const testimonials_data: TestimonialsCardProps[] = [
+export const testimonials_data: TestimonialsData[] = [
   {
     stars: 5,
     pfp: PFP1,

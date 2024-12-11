@@ -1,3 +1,6 @@
+import { Inter_Tight } from "next/font/google";
+
+// Images
 import BlankImage from "@/public/images/empty.svg";
 
 export const empty = BlankImage;
@@ -9,3 +12,6 @@ export const section_heading_text_styles = [
 ].join(" ");
 
 export const benefits_arc_height = "h-[80px] md:h-[120px] xl:h-[190px]";
+
+export const inter_tight = Inter_Tight({ subsets: ["latin"] });
+

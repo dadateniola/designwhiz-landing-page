@@ -15,9 +15,13 @@ const Benefits = () => {
   return (
     <section id="benefits">
       <BenefitsArcSeparator />
-      <div className={clsx("custom-flex-col gap-[120px]", 
-        "px-4 xs:px-8 lg:px-20 xl:px-[116px] pb-[200px]"
-      )}>
+      <div
+        className={clsx(
+          "custom-flex-col gap-10 sm:gap-20 md:gap-[120px]",
+          "pt-10 sm:pt-8 md:pt-0 pb-[110px] sm:pb-[200px]",
+          "px-4 xs:px-8 lg:px-20 xl:px-[116px]"
+        )}
+      >
         <div className="flex flex-col items-center gap-4">
           <SectionLabel>DesignWhiz For You</SectionLabel>
           <h1
@@ -29,13 +33,13 @@ const Benefits = () => {
           >
             We know you deserve better.
           </h1>
-          <p className="text-text-sub text-lg font-normal text-center leading-[26px]">
+          <p className="text-text-sub text-sm sm:text-base lg:text-lg font-normal text-center">
             Not just another Dribbble or Behance. You
             <br />
             deserve much more!
           </p>
         </div>
-        <div className="custom-flex-col gap-20">
+        <div className="custom-flex-col gap-16 md:gap-20">
           {benefits_data.map((benefit, idx) => (
             <BenefitsCard key={idx} {...benefit} />
           ))}
