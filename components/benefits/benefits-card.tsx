@@ -44,7 +44,7 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
         else handleLeave();
       },
       {
-        threshold: [0, 0.5],
+        threshold: 0.5, // [0, 0.5]
       }
     );
 
