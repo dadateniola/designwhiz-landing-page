@@ -5,6 +5,8 @@ import { FeaturesRocket } from "../svg/svg";
 
 // Imports
 import clsx from "clsx";
+import { features_data } from "./data";
+import FeaturesCard from "./features-card";
 import { SectionLabel } from "../global-components";
 import { inter_tight, section_heading_text_styles } from "@/app/config";
 
@@ -47,7 +49,11 @@ const Features = () => {
             </button>
           </div>
         </div>
-        <p className="text-text-sub text-center font-medium">Features go here 👌</p>
+        <div className="custom-flex-col gap-20 md:gap-[120px] xl:gap-[320px]">
+          {features_data.map((feature, idx) => (
+            <FeaturesCard key={idx} data={feature} />
+          ))}
+        </div>
       </div>
     </section>
   );
