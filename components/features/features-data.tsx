@@ -7,6 +7,7 @@ import {
   JobsFeatures,
   FramesFeatures,
   ImportFeatures,
+  StreaksFeatures,
   CrossPostFeatures,
   ResourcesFeatures,
 } from "./features-components";
@@ -45,5 +46,6 @@ export const features_data: FeaturesCardData[] = [
   {
     title: "Stay consistent with streaks",
     desc: "Track your progress, unlock rewards, and build a creative habit that keeps you inspired and motivated.",
+    preview: <StreaksFeatures />,
   },
 ];

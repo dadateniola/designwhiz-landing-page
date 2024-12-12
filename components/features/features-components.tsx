@@ -21,6 +21,14 @@ import CrossPostAccounts from "@/public/images/features/cross-post-accounts.png"
 import JobsPage from "@/public/images/features/jobs-page.png";
 import JObsAirbnb from "@/public/images/features/jobs-airbnb.png";
 import JobsSpotify from "@/public/images/features/jobs-spotify.png";
+// ------ Streaks ------
+import StreaksPage from "@/public/images/features/streaks-page.png";
+// import StreaksRank from "@/public/images/features/streaks-rank.png";
+// import StreaksStreak from "@/public/images/features/streaks-streak.png";
+// import StreaksVeteran from "@/public/images/features/streaks-veteran.png";
+// import StreaksMaestro from "@/public/images/features/streaks-maestro.png";
+// import StreaksExplorer from "@/public/images/features/streaks-explorer.png";
+// import StreaksTrendsetter from "@/public/images/features/streaks-trendsetter.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -139,5 +147,11 @@ export const JobsFeatures = () => (
           "42.612px 66.843px 47.625px 0px rgba(0, 0, 0, 0.03), 19.217px 29.244px 35.092px 0px rgba(0, 0, 0, 0.05), 5.013px 7.52px 19.217px 0px rgba(0, 0, 0, 0.06)",
       }}
     />
+  </div>
+);
+
+export const StreaksFeatures = () => (
+  <div className="w-full relative pr-[26px]">
+    <Image src={StreaksPage} alt="streaks page" className="w-full" />
   </div>
 );
