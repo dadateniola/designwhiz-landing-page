@@ -1,3 +1,6 @@
+import { CSSProperties } from "react";
+import { StaticImageData } from "next/image";
+
 // Imports
 import { hero_mockup_nav_actions, hero_mockup_sidebar_actions } from "./data";
 
@@ -35,4 +38,15 @@ export interface HeroMockupSidebarButtonProps {
 export interface HeroMockupSidebarFooterIconProps {
   url: string;
   icon: "x" | "linkedin" | "instagram";
+}
+
+export interface HeroPreviewImageProps {
+  alt: string;
+  className?: string;
+  style?: CSSProperties;
+  containerClassName?: string;
+  src: string | StaticImageData;
+  states: { loaded: boolean; error: boolean };
+  onLoad: () => void;
+  onError: () => void;
 }

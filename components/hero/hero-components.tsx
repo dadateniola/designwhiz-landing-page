@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { CSSProperties } from "react";
 
 // Types
 import type {
   HeroMockupIconsProps,
+  HeroPreviewImageProps,
   HeroMockupNavButtonProps,
   HeroMockupSidebarButtonProps,
   HeroMockupSidebarFooterIconProps,
@@ -10,18 +12,18 @@ import type {
 
 // Imports
 import {
+  XIcon,
   ProIcon,
   FeedIcon,
   JobsIcon,
   FramesIcon,
   SearchIcon,
   ConnectIcon,
+  LinkedinIcon,
   BookmarksIcon,
+  InstagramIcon,
   ResourcesIcon,
   NotificationsIcon,
-  XIcon,
-  LinkedinIcon,
-  InstagramIcon,
 } from "../svg/svg";
 
 import clsx from "clsx";
@@ -152,16 +154,61 @@ export const HeroMockupSidebarFooterIcon: React.FC<
   </a>
 );
 
-export const HeroMockupPreviewLoader: React.FC = () => (
-  <div className="absolute inset-0 w-full h-full">
+export const HeroMockupPreviewLoader: React.FC<{ className?: string }> = ({
+  className,
+}) => (
+  <div className={clsx("absolute inset-0 w-full h-full", className)}>
     <Loader />
   </div>
 );
 
-export const HeroMockupPreviewError: React.FC = () => (
-  <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+export const HeroMockupPreviewError: React.FC<{ className?: string }> = ({
+  className,
+}) => (
+  <div
+    className={clsx(
+      "absolute inset-0 w-full h-full flex items-center justify-center",
+      className
+    )}
+  >
     <p className="text-text-sub text-sm font-medium text-center">
       Failed to load image 😔
     </p>
   </div>
 );
+
+export const HeroPreviewImage: React.FC<HeroPreviewImageProps> = ({
+  src,
+  alt,
+  style,
+  states,
+  className,
+  containerClassName,
+
+  onLoad,
+  onError,
+}) => {
+  const { error, loaded } = states;
+
+  return (
+    <div className={clsx("relative bg-neutral-50", containerClassName)}>
+      <Image
+        src={src}
+        alt={alt}
+        width={1500}
+        style={style}
+        onLoad={onLoad}
+        onError={onError}
+        className={clsx(
+          "transition-opacity duration-500",
+          loaded ? "opacity-100" : "opacity-0",
+          className
+        )}
+      />
+      {!loaded && !error && (
+        <HeroMockupPreviewLoader className="bg-neutral-50" />
+      )}
+      {error && <HeroMockupPreviewError className="bg-neutral-50" />}
+    </div>
+  );
+};
