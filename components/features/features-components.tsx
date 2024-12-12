@@ -14,6 +14,9 @@ import ResourcesPage from "@/public/images/features/resources-page.png";
 // ------ Import ------
 import ImportFrom from "@/public/images/features/import-from.png";
 import ImportLink from "@/public/images/features/import-link.png";
+// ------ Cross Post ------
+import CrossPostTags from "@/public/images/features/cross-post-tags.png";
+import CrossPostAccounts from "@/public/images/features/cross-post-accounts.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -87,6 +90,25 @@ export const ImportFeatures = () => (
       style={{
         boxShadow:
           "292.418px 162.617px 93.341px 0px rgba(0, 0, 0, 0.00), 187.41px 103.55px 85.319px 0px rgba(0, 0, 0, 0.01), 105.008px 58.338px 72.193px 0px rgba(0, 0, 0, 0.04), 46.67px 26.252px 53.233px 0px rgba(0, 0, 0, 0.07), 11.668px 6.563px 29.169px 0px rgba(0, 0, 0, 0.08)",
+      }}
+    />
+  </div>
+);
+
+export const CrossPostFeatures = () => (
+  <div className="w-full relative navbar:pl-[4%] pr-[16%]">
+    <Image
+      src={CrossPostTags}
+      alt="final touches to cross posts"
+      className="w-full"
+    />
+    <Image
+      src={CrossPostAccounts}
+      alt="cross post from different platforms"
+      className="absolute bottom-[25%] right-0 w-[50%] rounded-lg"
+      style={{
+        boxShadow:
+          "379.976px 211.308px 121.289px 0px rgba(0, 0, 0, 0.00), 243.526px 134.555px 110.866px 0px rgba(0, 0, 0, 0.01), 136.45px 75.806px 93.809px 0px rgba(0, 0, 0, 0.04), 60.645px 34.113px 69.173px 0px rgba(0, 0, 0, 0.07), 15.161px 8.528px 37.903px 0px rgba(0, 0, 0, 0.08)",
       }}
     />
   </div>

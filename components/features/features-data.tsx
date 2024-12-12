@@ -6,6 +6,7 @@ import {
   FeedFeatures,
   FramesFeatures,
   ImportFeatures,
+  CrossPostFeatures,
   ResourcesFeatures,
 } from "./features-components";
 
@@ -33,6 +34,7 @@ export const features_data: FeaturesCardData[] = [
   {
     title: "Same post, different platforms",
     desc: "Save time and increase your reach by publishing your designs across multiple platforms in just one click with cross posting on DesignWhiz.",
+    preview: <CrossPostFeatures />,
   },
   {
     title: "Find your next design gig",
