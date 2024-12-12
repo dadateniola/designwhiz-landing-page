@@ -2,7 +2,7 @@
 import type { FeaturesCardData } from "./types";
 
 // Imports
-import { FeedFeatures } from "./features-components";
+import { FeedFeatures, FramesFeatures } from "./features-components";
 
 export const features_data: FeaturesCardData[] = [
   {
@@ -13,6 +13,7 @@ export const features_data: FeaturesCardData[] = [
   {
     title: "Show the world your skill with Frames",
     desc: "Give your talent and design a place to shine with Frames on DesignWhiz. Now you can post your creative work at any stage and have other designers appreciate your craft.",
+    preview: <FramesFeatures />,
   },
   {
     title: "All the resources you need, in one place",

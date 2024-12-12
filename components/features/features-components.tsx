@@ -5,6 +5,9 @@ import Image from "next/image";
 import FeedWho from "@/public/images/features/feed-who.png";
 import FeedPage from "@/public/images/features/feed-page.png";
 import FeedPost from "@/public/images/features/feed-post.png";
+// ------ Frames ------
+import FramesTags from "@/public/images/features/frames-tags.png";
+import FramesImport from "@/public/images/features/frames-import.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -25,6 +28,25 @@ export const FeedFeatures = () => (
       style={{
         boxShadow:
           "88.059px 137.05px 45.89px 0px rgba(0, 0, 0, 0.00), 88.059px 137.05px 45.89px 0px rgba(0, 0, 0, 0.00), 56.432px 87.439px 41.549px 0px rgba(0, 0, 0, 0.01), 56.432px 87.439px 41.549px 0px rgba(0, 0, 0, 0.01), 31.627px 49.611px 35.348px 0px rgba(0, 0, 0, 0.03), 31.627px 49.611px 35.348px 0px rgba(0, 0, 0, 0.03), 14.263px 21.705px 26.046px 0px rgba(0, 0, 0, 0.05), 3.721px 5.581px 14.263px 0px rgba(0, 0, 0, 0.06)",
+      }}
+    />
+  </div>
+);
+
+export const FramesFeatures = () => (
+  <div className="w-full pt-6 sm:pt-[40px] navbar:pt-[50px] xl:pt-[64px] relative flex justify-end">
+    <Image
+      src={FramesImport}
+      alt="import your designs to frames"
+      className="absolute top-0 left-0 w-[50%] rounded-md"
+    />
+    <Image
+      src={FramesTags}
+      alt="final touches to frames"
+      className="relative w-[60%] rounded-lg"
+      style={{
+        boxShadow:
+          "-281.943px -155.627px 90.026px 0px rgba(0, 0, 0, 0.00), -180.75px -99.797px 82.35px 0px rgba(0, 0, 0, 0.00), -101.192px -55.83px 69.788px 0px rgba(0, 0, 0, 0.01), -45.362px -25.124px 51.643px 0px rgba(0, 0, 0, 0.02), -11.166px -6.281px 28.613px 0px rgba(0, 0, 0, 0.03)",
       }}
     />
   </div>
