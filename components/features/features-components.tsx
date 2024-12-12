@@ -11,6 +11,9 @@ import FramesImport from "@/public/images/features/frames-import.png";
 // ------ Resources ------
 import ResourcesCard from "@/public/images/features/resources-card.png";
 import ResourcesPage from "@/public/images/features/resources-page.png";
+// ------ Import ------
+import ImportFrom from "@/public/images/features/import-from.png";
+import ImportLink from "@/public/images/features/import-link.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -65,6 +68,25 @@ export const ResourcesFeatures = () => (
       style={{
         boxShadow:
           "42.612px 66.843px 47.625px 0px rgba(0, 0, 0, 0.03), 19.217px 29.244px 35.092px 0px rgba(0, 0, 0, 0.05), 5.013px 7.52px 19.217px 0px rgba(0, 0, 0, 0.06), 92.895px 144.576px 48.41px 0px rgba(0, 0, 0, 0.00), 59.531px 92.241px 43.831px 0px rgba(0, 0, 0, 0.01), 33.364px 52.335px 37.289px 0px rgba(0, 0, 0, 0.03), 15.046px 22.897px 27.476px 0px rgba(0, 0, 0, 0.05), 3.925px 5.888px 15.046px 0px rgba(0, 0, 0, 0.06)",
+      }}
+    />
+  </div>
+);
+
+export const ImportFeatures = () => (
+  <div className="w-full relative">
+    <Image
+      src={ImportFrom}
+      alt="import from any platform"
+      className="w-[70%]"
+    />
+    <Image
+      src={ImportLink}
+      alt="import designs with a link"
+      className="absolute bottom-[4%] right-0 w-[50%] rounded-lg"
+      style={{
+        boxShadow:
+          "292.418px 162.617px 93.341px 0px rgba(0, 0, 0, 0.00), 187.41px 103.55px 85.319px 0px rgba(0, 0, 0, 0.01), 105.008px 58.338px 72.193px 0px rgba(0, 0, 0, 0.04), 46.67px 26.252px 53.233px 0px rgba(0, 0, 0, 0.07), 11.668px 6.563px 29.169px 0px rgba(0, 0, 0, 0.08)",
       }}
     />
   </div>

@@ -5,6 +5,7 @@ import type { FeaturesCardData } from "./types";
 import {
   FeedFeatures,
   FramesFeatures,
+  ImportFeatures,
   ResourcesFeatures,
 } from "./features-components";
 
@@ -27,6 +28,7 @@ export const features_data: FeaturesCardData[] = [
   {
     title: "Freedom to import designs from anywhere",
     desc: "Import your designs from anywhere without boundaries, or limits. Upload and showcase your best work in minutes.",
+    preview: <ImportFeatures />,
   },
   {
     title: "Same post, different platforms",
