@@ -1,10 +1,14 @@
 // Types
 import type { FeaturesCardData } from "./types";
 
+// Imports
+import { FeedFeatures } from "./features-components";
+
 export const features_data: FeaturesCardData[] = [
   {
     title: "Feeds, so you always know what's trending",
     desc: "Discover fresh inspiration, share your latest designs, and connect with like-minded designers in a vibrant, ever-growing creative community.",
+    preview: <FeedFeatures />,
   },
   {
     title: "Show the world your skill with Frames",

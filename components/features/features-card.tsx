@@ -9,12 +9,18 @@ import CTA from "../cta/cta";
 import { SectionLabel } from "../global-components";
 
 const FeaturesCard: React.FC<FeaturesCardProps> = ({
-  data: { desc, title },
+  data: { desc, title, preview },
 }) => {
   return (
     <div className="w-full h-screen flex items-center">
       <div className="w-full flex flex-col navbar:flex-row gap-[64px] navbar:gap-10">
-        <div className="flex-1 bg-red-50 min-h-[400px]"></div>
+        <div className="w-full navbar:w-[53%] navbar:grid justify-end">
+          {preview ? (
+            <div className="w-full navbar:w-[70vw] 2xl:w-[60vw] px-6 navbar:px-0">{preview}</div>
+          ) : (
+            <div className="w-full min-h-[400px] bg-red-50"></div>
+          )}
+        </div>
         <div
           className={clsx(
             "w-full navbar:w-[47%] custom-flex-col gap-6",

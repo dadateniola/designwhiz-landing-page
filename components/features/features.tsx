@@ -5,8 +5,8 @@ import { FeaturesRocket } from "../svg/svg";
 
 // Imports
 import clsx from "clsx";
-import { features_data } from "./data";
 import FeaturesCard from "./features-card";
+import { features_data } from "./features-data";
 import { SectionLabel } from "../global-components";
 import { inter_tight, section_heading_text_styles } from "@/app/config";
 
