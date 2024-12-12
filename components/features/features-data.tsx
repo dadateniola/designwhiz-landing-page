@@ -4,6 +4,7 @@ import type { FeaturesCardData } from "./types";
 // Imports
 import {
   FeedFeatures,
+  JobsFeatures,
   FramesFeatures,
   ImportFeatures,
   CrossPostFeatures,
@@ -39,6 +40,7 @@ export const features_data: FeaturesCardData[] = [
   {
     title: "Find your next design gig",
     desc: "Explore handpicked design opportunities selected based on your skill and experience - from internships to senior design roles.",
+    preview: <JobsFeatures />,
   },
   {
     title: "Stay consistent with streaks",

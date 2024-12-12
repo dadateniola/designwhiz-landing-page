@@ -17,6 +17,10 @@ import ImportLink from "@/public/images/features/import-link.png";
 // ------ Cross Post ------
 import CrossPostTags from "@/public/images/features/cross-post-tags.png";
 import CrossPostAccounts from "@/public/images/features/cross-post-accounts.png";
+// ------ Jobs ------
+import JobsPage from "@/public/images/features/jobs-page.png";
+import JObsAirbnb from "@/public/images/features/jobs-airbnb.png";
+import JobsSpotify from "@/public/images/features/jobs-spotify.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -109,6 +113,30 @@ export const CrossPostFeatures = () => (
       style={{
         boxShadow:
           "379.976px 211.308px 121.289px 0px rgba(0, 0, 0, 0.00), 243.526px 134.555px 110.866px 0px rgba(0, 0, 0, 0.01), 136.45px 75.806px 93.809px 0px rgba(0, 0, 0, 0.04), 60.645px 34.113px 69.173px 0px rgba(0, 0, 0, 0.07), 15.161px 8.528px 37.903px 0px rgba(0, 0, 0, 0.08)",
+      }}
+    />
+  </div>
+);
+
+export const JobsFeatures = () => (
+  <div className="w-full relative pr-[37px]">
+    <Image src={JobsPage} alt="jobs page" className="w-full" />
+    <Image
+      src={JObsAirbnb}
+      alt="jobs airbnb"
+      className="absolute -bottom-[5%] right-7 w-[9%] rounded-[30px] rotate-[41deg]"
+      style={{
+        boxShadow:
+          "42.612px 66.843px 47.625px 0px rgba(0, 0, 0, 0.03), 19.217px 29.244px 35.092px 0px rgba(0, 0, 0, 0.05), 5.013px 7.52px 19.217px 0px rgba(0, 0, 0, 0.06)",
+      }}
+    />
+    <Image
+      src={JobsSpotify}
+      alt="jobs spotify"
+      className="absolute top-0 right-[20%] -translate-y-[110%] w-[10%] rounded-[30px] -rotate-[64deg]"
+      style={{
+        boxShadow:
+          "42.612px 66.843px 47.625px 0px rgba(0, 0, 0, 0.03), 19.217px 29.244px 35.092px 0px rgba(0, 0, 0, 0.05), 5.013px 7.52px 19.217px 0px rgba(0, 0, 0, 0.06)",
       }}
     />
   </div>

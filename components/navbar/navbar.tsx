@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         background: "rgba(255, 255, 255, 0.85)",
       }}
       className={clsx(
-        "fixed top-9 left-2/4 -translate-x-2/4 p-2 pl-4 flex gap-2 justify-between rounded-full",
+        "fixed top-5 left-2/4 -translate-x-2/4 p-2 pl-4 flex gap-2 justify-between rounded-full",
         className
       )}
     >
