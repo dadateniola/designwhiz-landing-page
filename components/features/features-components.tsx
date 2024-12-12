@@ -8,6 +8,9 @@ import FeedPost from "@/public/images/features/feed-post.png";
 // ------ Frames ------
 import FramesTags from "@/public/images/features/frames-tags.png";
 import FramesImport from "@/public/images/features/frames-import.png";
+// ------ Resources ------
+import ResourcesCard from "@/public/images/features/resources-card.png";
+import ResourcesPage from "@/public/images/features/resources-page.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -47,6 +50,21 @@ export const FramesFeatures = () => (
       style={{
         boxShadow:
           "-281.943px -155.627px 90.026px 0px rgba(0, 0, 0, 0.00), -180.75px -99.797px 82.35px 0px rgba(0, 0, 0, 0.00), -101.192px -55.83px 69.788px 0px rgba(0, 0, 0, 0.01), -45.362px -25.124px 51.643px 0px rgba(0, 0, 0, 0.02), -11.166px -6.281px 28.613px 0px rgba(0, 0, 0, 0.03)",
+      }}
+    />
+  </div>
+);
+
+export const ResourcesFeatures = () => (
+  <div className="w-full relative pr-[26px]">
+    <Image src={ResourcesPage} alt="resources page" className="w-full" />
+    <Image
+      src={ResourcesCard}
+      alt="resource card"
+      className="w-[18%] absolute bottom-[16%] right-9 rounded-xl rotate-[7deg]"
+      style={{
+        boxShadow:
+          "42.612px 66.843px 47.625px 0px rgba(0, 0, 0, 0.03), 19.217px 29.244px 35.092px 0px rgba(0, 0, 0, 0.05), 5.013px 7.52px 19.217px 0px rgba(0, 0, 0, 0.06), 92.895px 144.576px 48.41px 0px rgba(0, 0, 0, 0.00), 59.531px 92.241px 43.831px 0px rgba(0, 0, 0, 0.01), 33.364px 52.335px 37.289px 0px rgba(0, 0, 0, 0.03), 15.046px 22.897px 27.476px 0px rgba(0, 0, 0, 0.05), 3.925px 5.888px 15.046px 0px rgba(0, 0, 0, 0.06)",
       }}
     />
   </div>

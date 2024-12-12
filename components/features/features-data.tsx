@@ -2,7 +2,11 @@
 import type { FeaturesCardData } from "./types";
 
 // Imports
-import { FeedFeatures, FramesFeatures } from "./features-components";
+import {
+  FeedFeatures,
+  FramesFeatures,
+  ResourcesFeatures,
+} from "./features-components";
 
 export const features_data: FeaturesCardData[] = [
   {
@@ -18,6 +22,7 @@ export const features_data: FeaturesCardData[] = [
   {
     title: "All the resources you need, in one place",
     desc: "From design tips to tools and assets, find resources to help you improve your skill and grow your career.",
+    preview: <ResourcesFeatures />,
   },
   {
     title: "Freedom to import designs from anywhere",
