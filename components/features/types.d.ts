@@ -1,7 +1,7 @@
 export type FeaturesCardData = {
   desc: string;
   title: string;
-  preview?: React.ReactNode;
+  preview: React.ReactNode;
 };
 
 export interface FeaturesCardProps {

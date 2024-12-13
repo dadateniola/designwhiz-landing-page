@@ -67,10 +67,10 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
       <div className="flex flex-col navbar:flex-row gap-8 xl:gap-[85px]">
         <div className="w-full navbar:w-[310px] xl:w-[337px] custom-flex-col gap-8 justify-between">
           <div className="p-4 custom-flex-col gap-8">
-            <div className="custom-flex-col gap-1">
+            <div className="custom-flex-col gap-3 navbar:gap-1">
               <p
                 className={clsx(
-                  "text-black font-medium leading-8",
+                  "text-black font-medium leading-[100%]",
                   "text-xl lg:text-2xl xl:text-[28px]"
                 )}
               >

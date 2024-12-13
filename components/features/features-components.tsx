@@ -23,12 +23,12 @@ import JObsAirbnb from "@/public/images/features/jobs-airbnb.png";
 import JobsSpotify from "@/public/images/features/jobs-spotify.png";
 // ------ Streaks ------
 import StreaksPage from "@/public/images/features/streaks-page.png";
-// import StreaksRank from "@/public/images/features/streaks-rank.png";
-// import StreaksStreak from "@/public/images/features/streaks-streak.png";
-// import StreaksVeteran from "@/public/images/features/streaks-veteran.png";
-// import StreaksMaestro from "@/public/images/features/streaks-maestro.png";
-// import StreaksExplorer from "@/public/images/features/streaks-explorer.png";
-// import StreaksTrendsetter from "@/public/images/features/streaks-trendsetter.png";
+import StreaksRank from "@/public/images/features/streaks-rank.png";
+import StreaksStreak from "@/public/images/features/streaks-streak.png";
+import StreaksVeteran from "@/public/images/features/streaks-veteran.png";
+import StreaksMaestro from "@/public/images/features/streaks-maestro.png";
+import StreaksExplorer from "@/public/images/features/streaks-explorer.png";
+import StreaksTrendsetter from "@/public/images/features/streaks-trendsetter.png";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -151,7 +151,45 @@ export const JobsFeatures = () => (
 );
 
 export const StreaksFeatures = () => (
-  <div className="w-full relative pr-[26px]">
+  <div className="w-full relative pl-[10%] pr-[5%]">
     <Image src={StreaksPage} alt="streaks page" className="w-full" />
+    <Image
+      src={StreaksRank}
+      alt="users rank"
+      className="w-[20%] absolute top-[15%] right-[53px] rounded-xl rotate-[4deg]"
+      style={{
+        boxShadow:
+          "33.364px 52.335px 37.289px 0px rgba(0, 0, 0, 0.03), 3.925px 5.888px 15.046px 0px rgba(0, 0, 0, 0.06)",
+      }}
+    />
+    <Image
+      src={StreaksStreak}
+      alt="users streak"
+      className="w-[12%] absolute bottom-[6%] left-[12.7%] rounded-[14px] -rotate-[6deg]"
+      style={{
+        boxShadow:
+          "88.059px 137.05px 45.89px 0px rgba(0, 0, 0, 0.00), 88.059px 137.05px 45.89px 0px rgba(0, 0, 0, 0.00), 56.432px 87.439px 41.549px 0px rgba(0, 0, 0, 0.01), 56.432px 87.439px 41.549px 0px rgba(0, 0, 0, 0.01), 31.627px 49.611px 35.348px 0px rgba(0, 0, 0, 0.03), 31.627px 49.611px 35.348px 0px rgba(0, 0, 0, 0.03), 14.263px 21.705px 26.046px 0px rgba(0, 0, 0, 0.05), 3.721px 5.581px 14.263px 0px rgba(0, 0, 0, 0.06)",
+      }}
+    />
+    <Image
+      src={StreaksExplorer}
+      alt="explorer badge"
+      className="w-[12%] absolute top-0 right-0 -translate-y-[60%]"
+    />
+    <Image
+      src={StreaksVeteran}
+      alt="veteran badge"
+      className="w-[9%] absolute bottom-[7%] right-[25.5%]"
+    />
+    <Image
+      src={StreaksTrendsetter}
+      alt="trendsetter badge"
+      className="w-[6%] absolute bottom-0 left-[42%] translate-y-[50%]"
+    />
+    <Image
+      src={StreaksMaestro}
+      alt="maestro badge"
+      className="w-[9%] absolute top-[14%] left-0"
+    />
   </div>
 );
