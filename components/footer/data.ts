@@ -23,7 +23,7 @@ export const footer_avatars: FooterAvatarProps[] = [
     src: Avatar2,
   },
   {
-    x: 1,
+    x: 0,
     y: 72.5,
     src: Avatar3,
   },
