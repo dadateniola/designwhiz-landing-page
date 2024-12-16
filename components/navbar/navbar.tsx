@@ -1,56 +1,87 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 
 // Types
-import type { NavbarProps, WebsiteSection } from "./types";
+import type { NavbarProps } from "./types";
 
 // Images
 import { DesignWhizLogo } from "../svg/svg";
 
 // Imports
 import clsx from "clsx";
-import { navbar_links } from "./data";
-import { NavbarCTA, NavbarLink } from "./navbar-components";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import NavbarLinks from "./navbar-links";
+import { NavbarCTA } from "./navbar-components";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
-  const [activeSection, setActiveSection] = useState<WebsiteSection | null>(
-    null
-  );
+  // Constants
+  const max_navbar_width = 960;
+  const navbar_percentage = 85;
 
-  useEffect(() => {
-    const sections = document.querySelectorAll("section");
+  // Refs
+  const isRetractedRef = useRef(false);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id as WebsiteSection);
-          }
+  // Functions
+  const calculateWidth = () => {
+    const viewportWidth = window.innerWidth;
+    const percentageWidth = viewportWidth * (navbar_percentage / 100);
+    return percentageWidth > max_navbar_width
+      ? `${max_navbar_width}px`
+      : `${navbar_percentage}%`;
+  };
+
+  const handleResize = () => {
+    const navbar = navbarRef.current;
+    const isRetracted = isRetractedRef.current;
+    if (navbar && !isRetracted) navbar.style.width = calculateWidth();
+  };
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.create({
+      trigger: "#navbar-trigger",
+      start: "top top",
+      onEnter: () => {
+        gsap.to(navbarRef.current, {
+          width: "auto",
+          duration: 0.3,
+          ease: "power2.out",
         });
+        isRetractedRef.current = true;
       },
-      {
-        threshold: [0, 0.5],
-      }
-    );
+      onEnterBack: () => {
+        gsap.to(navbarRef.current, {
+          width: calculateWidth(),
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        isRetractedRef.current = false;
+      },
+    });
 
-    sections.forEach((section) => observer.observe(section));
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  });
 
   return (
     <header
+      ref={navbarRef}
       style={{
-        width: "min(960px, 85%)",
         backdropFilter: "blur(16px)",
         border: "1px solid rgba(0, 0, 0, 0.10)",
         background: "rgba(255, 255, 255, 0.85)",
+        width: `min(${max_navbar_width}px, ${navbar_percentage}%)`,
       }}
       className={clsx(
-        "fixed top-5 left-2/4 -translate-x-2/4 p-2 pl-4 flex gap-2 justify-between rounded-full",
+        "fixed top-5 left-2/4 -translate-x-2/4 p-2 pl-4 flex gap-7 justify-between rounded-full",
         className
       )}
     >
@@ -61,13 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         </p>
       </div>
       <div className="hidden navbar:flex items-center gap-6">
-        <nav className="flex items-center gap-1">
-          {Object.entries(navbar_links).map(([text, href]) => (
-            <NavbarLink key={text} href={href} active={activeSection === text}>
-              {text}
-            </NavbarLink>
-          ))}
-        </nav>
+        <NavbarLinks />
         <div className="flex items-center">
           <NavbarCTA>Create account</NavbarCTA>
         </div>

@@ -9,3 +9,9 @@ export interface FooterAvatarProps {
   y: number;
   src: string | StaticImageData;
 }
+
+export interface FooterCircleProps {
+  x: number;
+  y: number;
+  size: number;
+}

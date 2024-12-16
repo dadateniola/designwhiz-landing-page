@@ -7,8 +7,6 @@ import "./media-queries.css";
 
 // Imports
 import clsx from "clsx";
-import Navbar from "@/components/navbar/navbar";
-import Footer from "@/components/footer/footer";
 
 // Fonts
 const inter = Inter({ subsets: ["latin"] });
@@ -34,9 +32,7 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <Navbar className="z-[4]" />
-        <main className="relative z-[3]">{children}</main>
-        <Footer className="z-[2]" />
+        {children}
         <div id="dot-bg" className="fixed z-[1] inset-0 w-full h-full"></div>
       </body>
     </html>

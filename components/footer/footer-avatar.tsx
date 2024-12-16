@@ -5,9 +5,9 @@ import Image from "next/image";
 import type { FooterAvatarProps } from "./types";
 
 // Imports
+import clsx from "clsx";
 import { empty } from "@/app/config";
 import { FooterPlane } from "../svg/svg";
-import clsx from "clsx";
 
 const FooterAvatar: React.FC<FooterAvatarProps> = ({ x, y, src }) => {
   return (
