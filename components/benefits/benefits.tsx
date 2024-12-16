@@ -18,8 +18,8 @@ const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
 const Benefits = () => {
   // Constants
-  const spacing = 50;
-  const scale_increment = 0.1;
+  const SPACING = 50;
+  const SCALE_INCREMENT = 0.1;
 
   // Refs
   const benefitsCardsTrigger = useRef<HTMLDivElement>(null);
@@ -28,11 +28,19 @@ const Benefits = () => {
     () => {
       gsap.registerPlugin(ScrollTrigger);
 
-      const timeline = gsap.timeline();
-
       const benefitsCards: HTMLDivElement[] = gsap.utils.toArray(
         "[data-benefits-card]"
       );
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: benefitsCardsTrigger.current,
+          start: "top top",
+          end: `+=${window.innerHeight * 2}`,
+          scrub: true,
+          pin: true,
+          pinSpacing: true,
+        },
+      });
 
       benefitsCards.forEach((card, idx) => {
         if (idx === 0) return;
@@ -42,22 +50,12 @@ const Benefits = () => {
         timeline.from(card, { y: "100vh" }).to(
           prev,
           {
-            y: -minus * spacing,
-            scale: 1 - minus * scale_increment,
+            y: -minus * SPACING,
+            scale: 1 - minus * SCALE_INCREMENT,
             filter: "blur(3px)",
           },
           "<"
         );
-      });
-
-      ScrollTrigger.create({
-        trigger: benefitsCardsTrigger.current,
-        start: "top top",
-        end: `+=${window.innerHeight * 2}`,
-        scrub: true,
-        pin: true,
-        pinSpacing: true,
-        animation: timeline,
       });
     },
     { scope: benefitsCardsTrigger }

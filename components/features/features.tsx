@@ -1,16 +1,63 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 
 // Images
 import { FeaturesRocket } from "../svg/svg";
 
 // Imports
 import clsx from "clsx";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import FeaturesCard from "./features-card";
 import { features_data } from "./features-data";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionLabel } from "../global-components";
 import { inter_tight, section_heading_text_styles } from "@/app/config";
 
 const Features = () => {
+  // Refs
+  const featuresCardsTrigger = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const timeline = gsap.timeline();
+
+      const featuresCards: HTMLDivElement[] = gsap.utils.toArray(
+        "[data-features-card]"
+      );
+
+      timeline.set(featuresCards[0], { autoAlpha: 1, pointerEvents: "auto" });
+
+      featuresCards.forEach((card, idx) => {
+        if (idx !== 0) {
+          timeline.to(card, { autoAlpha: 1, pointerEvents: "auto" });
+        }
+
+        if (idx !== featuresCards.length - 1) {
+          timeline.to(card, {
+            delay: 0.5,
+            autoAlpha: 0,
+            pointerEvents: "none",
+          });
+        }
+      });
+
+      ScrollTrigger.create({
+        trigger: featuresCardsTrigger.current,
+        start: "top top",
+        end: `+=${window.innerHeight * 3}`,
+        scrub: true,
+        pin: true,
+        pinSpacing: true,
+        animation: timeline,
+      });
+    },
+    { scope: featuresCardsTrigger }
+  );
+
   return (
     <section id="features">
       <div className="py-[120px] sm:py-[200px] custom-flex-col gap-20 md:gap-[120px]">
@@ -49,7 +96,8 @@ const Features = () => {
             </button>
           </div>
         </div>
-        <div className="custom-flex-col gap-20 md:gap-[120px] xl:gap-[320px]">
+        {/* custom-flex-col gap-20 md:gap-[120px] xl:gap-[320px] */}
+        <div ref={featuresCardsTrigger} className="relative h-screen">
           {features_data.map((feature, idx) => (
             <FeaturesCard key={idx} data={feature} />
           ))}

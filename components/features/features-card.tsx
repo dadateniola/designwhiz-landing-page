@@ -12,7 +12,13 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
   data: { desc, title, preview },
 }) => {
   return (
-    <div className="w-full h-screen flex items-center">
+    <div
+      data-features-card
+      className={clsx(
+        "absolute w-full h-screen flex items-center",
+        "opacity-0 invisible pointer-events-none"
+      )}
+    >
       <div className="w-full flex flex-col navbar:flex-row gap-[64px] navbar:gap-10">
         <div className="w-full navbar:w-[53%] navbar:grid justify-end">
           <div className="w-full navbar:w-[70vw] 2xl:w-[60vw] px-6 navbar:px-0">
