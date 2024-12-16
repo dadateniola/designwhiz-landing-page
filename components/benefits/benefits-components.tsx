@@ -1,3 +1,6 @@
+// Types
+import { BenefitsCardHeaderProps, BenefitsCardListProps } from "./types";
+
 // Imports
 import clsx from "clsx";
 import { benefits_arc_height } from "@/app/config";
@@ -18,4 +21,49 @@ export const BenefitsArcSeparator = () => (
       ></div>
     </div>
   </div>
+);
+
+export const BenefitsCardHeader: React.FC<BenefitsCardHeaderProps> = ({
+  heading,
+  subheading,
+}) => (
+  <div className="custom-flex-col gap-3 navbar:gap-1">
+    <p
+      className={clsx(
+        "text-black font-medium leading-[100%]",
+        "text-xl lg:text-2xl xl:text-[28px]"
+      )}
+    >
+      {heading}
+    </p>
+    <p className="text-neutral-200 text-base font-normal">{subheading}</p>
+  </div>
+);
+
+export const BenefitsCardList: React.FC<BenefitsCardListProps> = ({ list }) => (
+  <div className="custom-flex-col gap-5">
+    {list.map(({ desc, title }, idx) => (
+      <div key={idx} className="flex gap-3">
+        <div className="flex items-start w-[18px]">
+          <p className="text-text-soft text-sm font-medium">
+            {`${idx + 1}`.padStart(2, "0")}
+          </p>
+        </div>
+        <div className="flex-1 custom-flex-col gap-2">
+          <p className="text-[#0E0523] text-base font-medium">{title}</p>
+          <p className="text-neutral-200 text-sm font-normal">{desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+export const BenefitsCardVideoOverlay = () => (
+  <div
+    className="absolute z-[2] inset-0 w-full h-full rounded-[14px]"
+    style={{
+      boxShadow:
+        "0px 0px 0px 2px rgba(219, 219, 219, 0.38) inset, 0px 4px 2px 0px rgba(0, 0, 0, 0.06) inset, 0px 0px 24px 4px rgba(0, 0, 0, 0.04) inset",
+    }}
+  ></div>
 );
