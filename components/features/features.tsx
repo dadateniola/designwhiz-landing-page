@@ -67,6 +67,7 @@ const Features = () => {
                 {
                   x: "-70vw",
                   stagger: 0.05,
+                  ease: "expo.out",
                 },
                 "<"
               )
@@ -80,7 +81,8 @@ const Features = () => {
                 { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" },
                 {
                   clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-                }
+                },
+                "+=0.5"
               )
               .to(
                 cardSelector("[data-features-card-preview] img"),
