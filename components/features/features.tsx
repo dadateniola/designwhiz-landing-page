@@ -30,7 +30,7 @@ const Features = () => {
           scrollTrigger: {
             trigger: featuresCardsTrigger.current,
             start: "top top",
-            end: `+=${window.innerHeight * 3}`,
+            end: `+=${window.innerHeight * 5}`,
             scrub: true,
             pin: true,
             // snap: {
