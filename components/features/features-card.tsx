@@ -15,17 +15,21 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
     <div
       data-features-card
       className={clsx(
-        "absolute w-full h-screen flex items-center",
-        "opacity-0 invisible pointer-events-none"
+        "navbar:absolute w-full navbar:h-screen flex items-center",
+        "navbar:opacity-0 navbar:invisible navbar:pointer-events-none"
       )}
     >
       <div className="w-full flex flex-col navbar:flex-row gap-[64px] navbar:gap-10">
         <div className="w-full navbar:w-[53%] navbar:grid justify-end">
-          <div className="w-full navbar:w-[70vw] 2xl:w-[60vw] px-6 navbar:px-0">
+          <div
+            data-features-card-preview
+            className="w-full navbar:w-[70vw] 2xl:w-[60vw] px-6 navbar:px-0"
+          >
             {preview}
           </div>
         </div>
         <div
+          data-features-card-text
           className={clsx(
             "w-full navbar:w-[47%] custom-flex-col gap-6",
             "pl-[62px] navbar:pl-0",

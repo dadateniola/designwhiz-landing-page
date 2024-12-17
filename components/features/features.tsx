@@ -21,38 +21,67 @@ const Features = () => {
 
   useGSAP(
     () => {
-      gsap.registerPlugin(ScrollTrigger);
+      const mm = gsap.matchMedia();
 
-      const timeline = gsap.timeline();
+      mm.add("(min-width: 900px)", () => {
+        gsap.registerPlugin(ScrollTrigger);
 
-      const featuresCards: HTMLDivElement[] = gsap.utils.toArray(
-        "[data-features-card]"
-      );
+        const timeline = gsap.timeline();
 
-      timeline.set(featuresCards[0], { autoAlpha: 1, pointerEvents: "auto" });
+        const featuresCards: HTMLDivElement[] = gsap.utils.toArray(
+          "[data-features-card]"
+        );
 
-      featuresCards.forEach((card, idx) => {
-        if (idx !== 0) {
-          timeline.to(card, { autoAlpha: 1, pointerEvents: "auto" });
-        }
+        timeline
+          .set(featuresCards[0], { autoAlpha: 1, pointerEvents: "auto" })
+          .addLabel("0", ">");
 
-        if (idx !== featuresCards.length - 1) {
-          timeline.to(card, {
-            delay: 0.5,
-            autoAlpha: 0,
-            pointerEvents: "none",
-          });
-        }
-      });
+        featuresCards.forEach((card, idx) => {
+          const cardSelector = gsap.utils.selector(card);
 
-      ScrollTrigger.create({
-        trigger: featuresCardsTrigger.current,
-        start: "top top",
-        end: `+=${window.innerHeight * 3}`,
-        scrub: true,
-        pin: true,
-        pinSpacing: true,
-        animation: timeline,
+          if (idx !== 0) {
+            timeline
+              .set(card, { autoAlpha: 1, pointerEvents: "auto" })
+              .from(cardSelector("[data-features-card-text]"), { autoAlpha: 0 })
+              .from(
+                cardSelector("[data-features-card-preview] img"),
+                {
+                  x: "-70vw",
+                  stagger: 0.05,
+                },
+                "<"
+              )
+              .addLabel(`${idx}`, ">");
+          }
+
+          if (idx !== featuresCards.length - 1) {
+            timeline
+              .to(cardSelector("[data-features-card-text]"), { autoAlpha: 0 })
+              .to(
+                cardSelector("[data-features-card-preview] img"),
+                {
+                  x: "-70vw",
+                  stagger: 0.05,
+                },
+                "<"
+              )
+              .set(card, { autoAlpha: 0, pointerEvents: "none" });
+          }
+        });
+
+        ScrollTrigger.create({
+          trigger: featuresCardsTrigger.current,
+          start: "top top",
+          end: `+=${window.innerHeight * 3}`,
+          scrub: true,
+          pin: true,
+          snap: {
+            snapTo: "labelsDirectional",
+            duration: { min: 0.2, max: 0.5 },
+          },
+          pinSpacing: true,
+          animation: timeline,
+        });
       });
     },
     { scope: featuresCardsTrigger }
@@ -96,8 +125,13 @@ const Features = () => {
             </button>
           </div>
         </div>
-        {/* custom-flex-col gap-20 md:gap-[120px] xl:gap-[320px] */}
-        <div ref={featuresCardsTrigger} className="relative h-screen">
+        <div
+          ref={featuresCardsTrigger}
+          className={clsx(
+            "relative navbar:h-screen",
+            "custom-flex-col gap-20 md:gap-[120px] navbar:gap-0"
+          )}
+        >
           {features_data.map((feature, idx) => (
             <FeaturesCard key={idx} data={feature} />
           ))}
