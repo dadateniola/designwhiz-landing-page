@@ -26,7 +26,20 @@ const Features = () => {
       mm.add("(min-width: 900px)", () => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const timeline = gsap.timeline();
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: featuresCardsTrigger.current,
+            start: "top top",
+            end: `+=${window.innerHeight * 3}`,
+            scrub: true,
+            pin: true,
+            // snap: {
+            //   snapTo: "labelsDirectional",
+            //   duration: { min: 0.2, max: 0.5 },
+            // },
+            pinSpacing: true,
+          },
+        });
 
         const featuresCards: HTMLDivElement[] = gsap.utils.toArray(
           "[data-features-card]"
@@ -42,7 +55,13 @@ const Features = () => {
           if (idx !== 0) {
             timeline
               .set(card, { autoAlpha: 1, pointerEvents: "auto" })
-              .from(cardSelector("[data-features-card-text]"), { autoAlpha: 0 })
+              .fromTo(
+                cardSelector("[data-features-card-text]"),
+                {
+                  clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                },
+                { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }
+              )
               .from(
                 cardSelector("[data-features-card-preview] img"),
                 {
@@ -56,7 +75,13 @@ const Features = () => {
 
           if (idx !== featuresCards.length - 1) {
             timeline
-              .to(cardSelector("[data-features-card-text]"), { autoAlpha: 0 })
+              .fromTo(
+                cardSelector("[data-features-card-text]"),
+                { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" },
+                {
+                  clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+                }
+              )
               .to(
                 cardSelector("[data-features-card-preview] img"),
                 {
@@ -67,20 +92,6 @@ const Features = () => {
               )
               .set(card, { autoAlpha: 0, pointerEvents: "none" });
           }
-        });
-
-        ScrollTrigger.create({
-          trigger: featuresCardsTrigger.current,
-          start: "top top",
-          end: `+=${window.innerHeight * 3}`,
-          scrub: true,
-          pin: true,
-          snap: {
-            snapTo: "labelsDirectional",
-            duration: { min: 0.2, max: 0.5 },
-          },
-          pinSpacing: true,
-          animation: timeline,
         });
       });
     },
