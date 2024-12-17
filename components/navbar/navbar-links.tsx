@@ -26,7 +26,7 @@ const NavbarLinks = () => {
         });
       },
       {
-        threshold: [0, 0.5],
+        threshold: 0,
       }
     );
 
