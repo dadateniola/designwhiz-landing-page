@@ -1,8 +1,11 @@
+import Image from "next/image";
+
 // Types
-import type { SectionLabelProps } from "./types";
+import type { PerspectiveGridProps, SectionLabelProps } from "./types";
 
 // Images
 import { LabelStar } from "./svg/svg";
+import PerspectiveGridImage from "@/public/images/perspective-grid.png";
 
 export const SectionLabel: React.FC<SectionLabelProps> = ({
   style,
@@ -19,5 +22,17 @@ export const SectionLabel: React.FC<SectionLabelProps> = ({
         <p className="gradient-cta-text">{children}</p>
       )}
     </div>
+  </div>
+);
+
+export const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({ style }) => (
+  <div className="absolute top-0 left-0 w-full h-[90vh]" style={style}>
+    <Image
+      src={PerspectiveGridImage}
+      alt="perspective grid"
+      fill
+      sizes="150vw"
+      className="object-cover object-bottom"
+    />
   </div>
 );

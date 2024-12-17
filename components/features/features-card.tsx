@@ -57,7 +57,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
                 {desc}
               </p>
             </div>
-            <div className="flex pl-[2px]">
+            <div className="flex pl-[2px] pb-[2px]">
               <CTA type="dark" className="py-[10px] w-[192px]">
                 Explore Designwhiz
               </CTA>

@@ -8,6 +8,7 @@ import clsx from "clsx";
 import CTA from "../cta/cta";
 import { footer_avatars } from "./data";
 import FooterAvatar from "./footer-avatar";
+import { PerspectiveGrid } from "../global-components";
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
@@ -18,6 +19,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           "linear-gradient(180deg, rgba(128, 47, 209, 0.00) 21.88%, rgba(156, 83, 250, 0.37) 239.02%), #FAF9FF",
       }}
     >
+      <PerspectiveGrid style={{ height: "50vh" }} />
       <div className="relative w-full h-full">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div className="relative w-[110vw] navbar:w-full h-[70vh] navbar:h-[90vh] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">

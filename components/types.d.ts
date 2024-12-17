@@ -13,3 +13,7 @@ export interface SectionLabelProps {
   customContent?: boolean;
   children: React.ReactNode;
 }
+
+export interface PerspectiveGridProps {
+  style?: CSSProperties;
+}
