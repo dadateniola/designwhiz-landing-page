@@ -61,14 +61,14 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
     <div
       ref={containerRef}
       data-benefits-card
-      className="absolute w-full p-4 pb-6 rounded-3xl bg-white will-change-transform"
+      className="navbar:absolute w-full p-4 pb-6 rounded-3xl bg-white will-change-transform"
       style={{
         backdropFilter: "blur(6px)",
         boxShadow:
           "0px 0px 0px 2px #FFF inset, 0px 4px 2px 0px rgba(0, 0, 0, 0.06) inset, 0px 0px 24px 4px rgba(0, 0, 0, 0.04) inset, 0px -10.44px 17.15px -6.67px #E2E3F2 inset",
       }}
     >
-      <div className="w-full max-h-[75vh] flex flex-col navbar:flex-row gap-8 xl:gap-[85px]">
+      <div className="w-full navbar:max-h-[75vh] flex flex-col navbar:flex-row gap-8 xl:gap-[85px]">
         <div className="w-full navbar:w-[310px] xl:w-[337px] custom-flex-col gap-8 justify-between">
           <div className="w-full flex-1 overflow-auto custom-scrollbar">
             <div className="w-full p-4 custom-flex-col gap-8">

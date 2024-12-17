@@ -26,36 +26,40 @@ const Benefits = () => {
 
   useGSAP(
     () => {
-      gsap.registerPlugin(ScrollTrigger);
+      const mm = gsap.matchMedia();
 
-      const benefitsCards: HTMLDivElement[] = gsap.utils.toArray(
-        "[data-benefits-card]"
-      );
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: benefitsCardsTrigger.current,
-          start: "top top",
-          end: `+=${window.innerHeight * 2}`,
-          scrub: true,
-          pin: true,
-          pinSpacing: true,
-        },
-      });
+      mm.add("(min-width: 900px)", () => {
+        gsap.registerPlugin(ScrollTrigger);
 
-      benefitsCards.forEach((card, idx) => {
-        if (idx === 0) return;
-        const prev = benefitsCards[idx - 1];
-        const minus = benefitsCards.length - idx;
-
-        timeline.from(card, { y: "100vh" }).to(
-          prev,
-          {
-            y: -minus * SPACING,
-            scale: 1 - minus * SCALE_INCREMENT,
-            filter: "blur(3px)",
-          },
-          "<"
+        const benefitsCards: HTMLDivElement[] = gsap.utils.toArray(
+          "[data-benefits-card]"
         );
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: benefitsCardsTrigger.current,
+            start: "top top",
+            end: `+=${window.innerHeight * 2}`,
+            scrub: true,
+            pin: true,
+            pinSpacing: true,
+          },
+        });
+
+        benefitsCards.forEach((card, idx) => {
+          if (idx === 0) return;
+          const prev = benefitsCards[idx - 1];
+          const minus = benefitsCards.length - idx;
+
+          timeline.from(card, { y: "100vh" }).to(
+            prev,
+            {
+              y: -minus * SPACING,
+              scale: 1 - minus * SCALE_INCREMENT,
+              filter: "blur(3px)",
+            },
+            "<"
+          );
+        });
       });
     },
     { scope: benefitsCardsTrigger }
@@ -66,7 +70,7 @@ const Benefits = () => {
       <BenefitsArcSeparator />
       <div
         className={clsx(
-          "custom-flex-col gap-10 sm:gap-20 md:gap-[calc(20vh-120px)]",
+          "custom-flex-col gap-10 sm:gap-20 md:gap-[120px] navbar:gap-[calc(20vh-120px)]",
           "pt-10 sm:pt-8 md:pt-0 pb-[110px] sm:pb-[200px]",
           "px-4 xs:px-8 lg:px-20 xl:px-[116px]"
         )}
@@ -90,7 +94,10 @@ const Benefits = () => {
         </div>
         <div
           ref={benefitsCardsTrigger}
-          className="relative h-screen flex items-center"
+          className={clsx(
+            "relative flex flex-col gap-16 md:gap-20 navbar:gap-0",
+            "navbar:h-screen navbar:flex-row navbar:items-center"
+          )}
         >
           {benefits_data.map((benefit, idx) => (
             <BenefitsCard key={idx} {...benefit} />
