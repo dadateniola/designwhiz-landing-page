@@ -18,6 +18,10 @@ export type HeroMockupNavAction = keyof typeof hero_mockup_nav_actions;
 export type HeroMockupSidebarAction =
   (typeof hero_mockup_sidebar_actions)[number];
 
+export interface LaunchVideoButtonProps {
+  onClick: () => void;
+}
+
 export interface HeroMockupIconsProps {
   size?: number;
   action: HeroMockupSidebarAction;

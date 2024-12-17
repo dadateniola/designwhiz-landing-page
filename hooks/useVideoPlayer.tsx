@@ -3,7 +3,10 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 
 // Types
-import { UseVideoPlayerReturnType } from "@/components/VideoPlayer/types";
+import {
+  FullscreenVideoElement,
+  UseVideoPlayerReturnType,
+} from "@/components/VideoPlayer/types";
 
 // Imports
 import gsap from "gsap";
@@ -207,6 +210,20 @@ export const useVideoPlayer = ({
     }
   }, [hideControls, showControls]);
 
+  const handleFullscreen = () => {
+    const video = videoRef.current as FullscreenVideoElement;
+
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    }
+  };
+
   useEffect(() => {
     const video = videoRef.current;
     const controls = controlsRef.current;
@@ -266,6 +283,7 @@ export const useVideoPlayer = ({
     handleKeyDown,
     handleVideoEnd,
     handlePlayPause,
+    handleFullscreen,
     handleMuteToggle,
     handleTimeChange,
     updateCurrentTime,

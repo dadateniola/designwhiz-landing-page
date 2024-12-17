@@ -1,31 +1,79 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
+
+// Types
+import type { SmoothScrollRef } from "@/components/smooth scroll/types";
 
 // Imports
+// ------ Main ------
 import Hero from "@/components/hero/hero";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 import Benefits from "@/components/benefits/benefits";
 import Features from "@/components/features/features";
-import LaunchVideo from "@/components/launch video/launch-video";
 import Testimonials from "@/components/testimonials/testimonials";
-
-// Imports
+// ------ Others ------
+import gsap from "gsap";
+import LaunchVideo from "@/components/launch video/launch-video";
+import SmoothScroll from "@/components/smooth scroll/smooth-scroll";
+import { LandingPageContext } from "@/components/landing-page-context";
 
 const LandingPage = () => {
+  // States
+  const [showLaunchVideo, setShowLaunchVideo] = useState<boolean>(false);
+
+  // Refs
+  const smoothScrollRef = useRef<SmoothScrollRef>(null);
+
+  // Functions
+  const enableScroll = () => {
+    document.body.style.overflowY = "auto";
+    smoothScrollRef.current?.enableScroll();
+  };
+  const disableScroll = () => {
+    document.body.style.overflowY = "hidden";
+    smoothScrollRef.current?.disableScroll();
+  };
+
+  const openLaunchVideo = () => setShowLaunchVideo(true);
+  const closeLaunchVideo = () => {
+    const timeline = gsap.timeline();
+
+    timeline
+      .to("[data-launch-video]", {
+        scale: 0.95,
+        autoAlpha: 0,
+        ease: "expo.out",
+      })
+      .call(() => {
+        enableScroll();
+        setShowLaunchVideo(false);
+      });
+  };
+
   return (
-    <>
-      <LaunchVideo className="z-10" />
-      <Navbar className="z-[4]" />
-      <main className="relative z-[3]">
-        <Hero />
-        <Benefits />
-        <Testimonials />
-        <Features />
-      </main>
-      <Footer className="z-[2]" />
-    </>
+    <LandingPageContext.Provider
+      value={{
+        enableScroll,
+        disableScroll,
+        openLaunchVideo,
+        closeLaunchVideo,
+      }}
+    >
+      <SmoothScroll ref={smoothScrollRef}>
+        {showLaunchVideo && <LaunchVideo className="z-10" />}
+        <Navbar className="z-[4]" />
+        <main className="relative z-[3]">
+          <Hero />
+          <Benefits />
+          <Testimonials />
+          <Features />
+        </main>
+        <Footer className="z-[2]" />
+        <div id="dot-bg" className="fixed z-[1] inset-0 w-full h-full"></div>
+      </SmoothScroll>
+    </LandingPageContext.Provider>
   );
 };
 

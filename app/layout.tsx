@@ -7,7 +7,6 @@ import "./media-queries.css";
 
 // Imports
 import clsx from "clsx";
-import SmoothScroll from "@/components/smooth scroll/smooth-scroll";
 
 // Fonts
 const inter = Inter({ subsets: ["latin"] });
@@ -33,10 +32,7 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <SmoothScroll>
-          {children}
-          <div id="dot-bg" className="fixed z-[1] inset-0 w-full h-full"></div>
-        </SmoothScroll>
+        {children}
       </body>
     </html>
   );

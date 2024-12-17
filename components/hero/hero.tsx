@@ -1,8 +1,7 @@
+"use client";
+
 import React from "react";
 import { Inter_Tight } from "next/font/google";
-
-// Images
-import { LaunchVideoPlayIcon } from "../svg/svg";
 
 // Imports
 import clsx from "clsx";
@@ -11,12 +10,15 @@ import HeroMockup from "./hero-mockup";
 import HeroPreview from "./hero-preview";
 import { hero_slider_text } from "./data";
 import HeroTextSlider from "./hero-text-slider";
-import { HeroCloudSeparator } from "./hero-components";
+import { useLandingPageContext } from "../landing-page-context";
+import { HeroCloudSeparator, LaunchVideoButton } from "./hero-components";
 import { benefits_arc_height, section_heading_text_styles } from "@/app/config";
 
 const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
 const Hero = () => {
+  const { openLaunchVideo } = useLandingPageContext();
+
   return (
     <section id="home">
       <div
@@ -29,14 +31,7 @@ const Hero = () => {
         <div style={{ height: "calc(36px + 60px)" }}></div>
         <div className="custom-flex-col gap-10">
           <div className="flex justify-center">
-            <button className="py-[6px] pl-2 pr-3 rounded-full gradient-cta">
-              <div className="flex items-center gap-1">
-                <div className="w-7 h-7 rounded-full custom-flex-center bg-purple-0">
-                  <LaunchVideoPlayIcon />
-                </div>
-                <p className="gradient-cta-text">See the launch video</p>
-              </div>
-            </button>
+            <LaunchVideoButton onClick={openLaunchVideo} />
           </div>
           <div className="custom-flex-col gap-8">
             <div className="custom-flex-col gap-6">

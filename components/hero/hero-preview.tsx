@@ -8,7 +8,7 @@ import { HeroPreviewImage } from "./hero-components";
 import Frames from "@/public/images/hero/frames.png";
 import Resources from "@/public/images/hero/resources.png";
 
-const HeroPreview = () => {
+const HeroPreview = React.memo(() => {
   // States
   const [imageStates, setImageStates] = useState({
     resources: { loaded: false, error: false },
@@ -72,6 +72,8 @@ const HeroPreview = () => {
       </div>
     </div>
   );
-};
+});
+
+HeroPreview.displayName = "HeroPreview";
 
 export default HeroPreview;

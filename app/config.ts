@@ -14,4 +14,3 @@ export const section_heading_text_styles = [
 export const benefits_arc_height = "h-[80px] md:h-[120px] xl:h-[190px]";
 
 export const inter_tight = Inter_Tight({ subsets: ["latin"] });
-

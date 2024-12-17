@@ -5,6 +5,7 @@ import { CSSProperties } from "react";
 import type {
   HeroMockupIconsProps,
   HeroPreviewImageProps,
+  LaunchVideoButtonProps,
   HeroMockupNavButtonProps,
   HeroMockupSidebarButtonProps,
   HeroMockupSidebarFooterIconProps,
@@ -24,11 +25,28 @@ import {
   InstagramIcon,
   ResourcesIcon,
   NotificationsIcon,
+  LaunchVideoPlayIcon,
 } from "../svg/svg";
 
 import clsx from "clsx";
 import Loader from "../loader/laoder";
 import { hero_mockup_nav_actions } from "./data";
+
+export const LaunchVideoButton: React.FC<LaunchVideoButtonProps> = ({
+  onClick,
+}) => (
+  <button
+    onClick={onClick}
+    className="py-[6px] pl-2 pr-3 rounded-full gradient-cta"
+  >
+    <div className="flex items-center gap-1">
+      <div className="w-7 h-7 rounded-full custom-flex-center bg-purple-0">
+        <LaunchVideoPlayIcon />
+      </div>
+      <p className="gradient-cta-text">See the launch video</p>
+    </div>
+  </button>
+);
 
 export const HeroCloudSeparator = () => (
   <div className="relative w-full h-0">

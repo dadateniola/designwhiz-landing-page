@@ -1,22 +1,52 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 
 // Types
 import type { LaunchVideoProps } from "./types";
 
 // Imports
 import clsx from "clsx";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { LaunchVideoCloseIcon } from "../svg/svg";
 import { SectionLabel } from "../global-components";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import { useLandingPageContext } from "../landing-page-context";
 
 const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
+  // Hooks
   const { isCustom } = useWindowWidth(900);
+  const { disableScroll, closeLaunchVideo } = useLandingPageContext();
+
+  // Refs
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Animation
+  useGSAP(() => {
+    const container = containerRef.current;
+
+    if (container) {
+      const timeline = gsap.timeline();
+
+      timeline
+        .call(() => {
+          disableScroll();
+        })
+        .from(container, {
+          delay: 0.3,
+          scale: 0.95,
+          autoAlpha: 0,
+          ease: "expo.out",
+        });
+    }
+  });
 
   return (
     <div
+      data-launch-video
+      ref={containerRef}
       className={clsx(
         "fixed inset-0 w-full h-screen overflow-hidden bg-white",
         className
@@ -35,7 +65,7 @@ const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
             <SectionLabel icon={false} style={{ height: 35 }}>
               DesignWhiz launch video
             </SectionLabel>
-            <button>
+            <button onClick={closeLaunchVideo}>
               <SectionLabel
                 icon={false}
                 customContent

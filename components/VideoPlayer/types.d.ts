@@ -13,6 +13,7 @@ export type UseVideoPlayerReturnType = {
   handleKeyDown: (event: KeyboardEvent) => void;
   handleVideoEnd: () => void;
   handlePlayPause: () => void;
+  handleFullscreen: () => void;
   handleMuteToggle: () => void;
   handleTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   updateCurrentTime: () => void;
@@ -40,3 +41,9 @@ export interface VidoePlayerSVGProps {
   size?: number;
   color?: string;
 }
+
+export type FullscreenVideoElement = HTMLVideoElement & {
+  webkitRequestFullscreen?: () => void;
+  mozRequestFullScreen?: () => void;
+  msRequestFullscreen?: () => void;
+};

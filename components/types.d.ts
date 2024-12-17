@@ -1,5 +1,12 @@
 import { CSSProperties } from "react";
 
+export interface LandingPageContextProps {
+  enableScroll: () => void;
+  disableScroll: () => void;
+  openLaunchVideo: () => void;
+  closeLaunchVideo: () => void;
+}
+
 export interface SectionLabelProps {
   icon?: boolean;
   style?: CSSProperties;
