@@ -8,6 +8,7 @@ import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 import Benefits from "@/components/benefits/benefits";
 import Features from "@/components/features/features";
+import LaunchVideo from "@/components/launch video/launch-video";
 import Testimonials from "@/components/testimonials/testimonials";
 
 // Imports
@@ -15,6 +16,7 @@ import Testimonials from "@/components/testimonials/testimonials";
 const LandingPage = () => {
   return (
     <>
+      <LaunchVideo className="z-10" />
       <Navbar className="z-[4]" />
       <main className="relative z-[3]">
         <Hero />

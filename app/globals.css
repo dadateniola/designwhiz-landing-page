@@ -141,3 +141,118 @@
     opacity: 0.5;
   }
 }
+
+/* Video player styles */
+input[type="range"].video-player-range {
+  --value: 0%; /* Initial value */
+  --color: #0c0a14; /* Initial color */
+
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"].video-player-range::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--color) var(--value),
+    #d9d9d9 var(--value)
+  );
+  height: 3px;
+  border-radius: 1px;
+}
+
+/******** Firefox ********/
+input[type="range"].video-player-range::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    var(--color) var(--value),
+    #d9d9d9 var(--value)
+  );
+  height: 3px;
+  border-radius: 1px;
+}
+
+/***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"].video-player-range::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--color);
+  margin-top: -3px;
+  height: 9px;
+  width: 9px;
+  opacity: 0;
+  transition: 0.3s;
+  border-radius: 100%;
+}
+
+input[type="range"].video-player-range:hover::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+/* Ripple effect */
+[data-custom-ripple] {
+  position: relative;
+}
+
+[data-custom-ripple]::after {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-custom-ripple]:hover::after,
+[data-stats-button]:hover [data-custom-ripple]::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+[data-custom-ripple]::after,
+.custom-ripple-effect::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 180%;
+  height: 180%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+
+.custom-ripple-effect {
+  position: relative;
+}
+
+.custom-ripple-effect::after {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.custom-ripple-effect:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.custom-ripple-bg {
+  position: relative;
+}
+
+.custom-ripple-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-ripple-bg::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 180%;
+  height: 180%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+}

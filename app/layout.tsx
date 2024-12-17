@@ -7,7 +7,7 @@ import "./media-queries.css";
 
 // Imports
 import clsx from "clsx";
-import SmoothScroll from "@/components/smooth-scroll/smooth-scroll";
+import SmoothScroll from "@/components/smooth scroll/smooth-scroll";
 
 // Fonts
 const inter = Inter({ subsets: ["latin"] });

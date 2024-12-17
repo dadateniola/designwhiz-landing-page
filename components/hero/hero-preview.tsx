@@ -32,7 +32,7 @@ const HeroPreview = () => {
   };
 
   return (
-    <div className="relative pt-[5vw] lg:pt-10 xl:pt-20">
+    <div id="navbar-trigger" className="relative pt-[5vw] lg:pt-10 xl:pt-20">
       <div className="relative w-full grid grid-cols-5">
         <HeroPreviewImage
           src={Frames}

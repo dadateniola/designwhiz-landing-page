@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
     ScrollTrigger.create({
       trigger: "#navbar-trigger",
-      start: "top top",
+      start: "top center",
       onEnter: () => {
         gsap.to(navbarRef.current, {
           width: "auto",
@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         });
         isRetractedRef.current = true;
       },
-      onEnterBack: () => {
+      onLeaveBack: () => {
         gsap.to(navbarRef.current, {
           width: calculateWidth(),
           duration: 0.3,
