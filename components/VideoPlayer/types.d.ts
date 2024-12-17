@@ -41,9 +41,3 @@ export interface VidoePlayerSVGProps {
   size?: number;
   color?: string;
 }
-
-export type FullscreenVideoElement = HTMLVideoElement & {
-  webkitRequestFullscreen?: () => void;
-  mozRequestFullScreen?: () => void;
-  msRequestFullscreen?: () => void;
-};

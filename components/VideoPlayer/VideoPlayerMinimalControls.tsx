@@ -5,6 +5,7 @@ import React from "react";
 // Images
 import { FaPause } from "react-icons/fa6";
 import { VideoPlayIcon } from "./VideoPlayerSVGs";
+import { RxEnterFullScreen } from "react-icons/rx";
 
 // Imports
 import Tooltip from "../Tooltip/Tooltip";
@@ -18,6 +19,7 @@ const VideoPlayerMinimalControls = () => {
     currentTime,
 
     handlePlayPause,
+    handleFullscreen,
   } = useVideoPlayerContext();
 
   return (
@@ -40,7 +42,21 @@ const VideoPlayerMinimalControls = () => {
           {formatVideoPlayerTime(duration - currentTime)}
         </p>
       </div>
-      <div></div>
+      <div>
+        <Tooltip
+          normal_case
+          position="top"
+          text="Fullscreen (f)"
+          className="w-6 h-6 min-w-6 min-h-6 max-w-6 max-h-6"
+        >
+          <button
+            onClick={handleFullscreen}
+            className="custom-ripple-bg custom-ripple-effect"
+          >
+            <RxEnterFullScreen size={24} color="white" />
+          </button>
+        </Tooltip>
+      </div>
     </div>
   );
 };

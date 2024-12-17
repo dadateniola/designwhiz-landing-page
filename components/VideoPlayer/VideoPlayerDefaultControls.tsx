@@ -4,6 +4,7 @@ import React, { forwardRef } from "react";
 
 // Images
 import { FaPause } from "react-icons/fa6";
+import { RxEnterFullScreen } from "react-icons/rx";
 import { VideoPlayIcon, VideoVolumeMax, VideoVolumeX } from "./VideoPlayerSVGs";
 
 // Imports
@@ -22,6 +23,7 @@ const VideoPlayerDefaultControls = forwardRef<HTMLInputElement, object>(
       handlePlayPause,
       handleMuteToggle,
       handleTimeChange,
+      handleFullscreen,
     } = useVideoPlayerContext();
 
     return (
@@ -72,6 +74,19 @@ const VideoPlayerDefaultControls = forwardRef<HTMLInputElement, object>(
               className="custom-ripple-bg custom-ripple-effect"
             >
               {isMuted ? <VideoVolumeX /> : <VideoVolumeMax />}
+            </button>
+          </Tooltip>
+          <Tooltip
+            normal_case
+            position="top"
+            text="Fullscreen (f)"
+            className="w-6 h-6 min-w-6 min-h-6 max-w-6 max-h-6"
+          >
+            <button
+              onClick={handleFullscreen}
+              className="custom-ripple-bg custom-ripple-effect"
+            >
+              <RxEnterFullScreen size={24} color="white" />
             </button>
           </Tooltip>
         </div>

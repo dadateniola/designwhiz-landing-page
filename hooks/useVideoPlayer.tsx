@@ -3,10 +3,7 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 
 // Types
-import {
-  FullscreenVideoElement,
-  UseVideoPlayerReturnType,
-} from "@/components/VideoPlayer/types";
+import { UseVideoPlayerReturnType } from "@/components/VideoPlayer/types";
 
 // Imports
 import gsap from "gsap";
@@ -154,15 +151,55 @@ export const useVideoPlayer = ({
     }));
   }, [showControls]);
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const handleFullscreen = () => {
+    const video = videoRef.current as any; // Using `any` to avoid TS errors
+
+    if (!document.fullscreenElement) {
+      // Enter fullscreen
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        video.mozRequestFullScreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      } else if ((document as any).mozCancelFullScreen) {
+        (document as any).mozCancelFullScreen();
+      } else if ((document as any).msExitFullscreen) {
+        (document as any).msExitFullscreen();
+      }
+    }
+  };
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+
   // Keyboard controls with brief controls visibility
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      // ------ (Space) ------
       if (event.code === "Space") {
         event.preventDefault(); // Prevent scrolling the page
         handlePlayPause(); // Toggle pause / play
-      } else if (event.key === "m" || event.key === "M") {
+      }
+      // ------ (M) ------
+      else if (event.key === "m" || event.key === "M") {
         handleMuteToggle(); // Toggle mute
-      } else if (event.code === "ArrowRight" || event.code === "ArrowLeft") {
+      }
+      // ------ (F) ------
+      else if (event.key === "f" || event.key === "F") {
+        event.preventDefault(); // Prevent unwanted side effects
+        handleFullscreen(); // Trigger fullscreen
+      }
+      // ------ (ArrowRight) / (ArrowLeft) ------
+      else if (event.code === "ArrowRight" || event.code === "ArrowLeft") {
         if (videoRef.current) {
           event.preventDefault(); // Prevent scrolling
 
@@ -209,20 +246,6 @@ export const useVideoPlayer = ({
       }, 2000); // Change this duration as needed
     }
   }, [hideControls, showControls]);
-
-  const handleFullscreen = () => {
-    const video = videoRef.current as FullscreenVideoElement;
-
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    }
-  };
 
   useEffect(() => {
     const video = videoRef.current;
