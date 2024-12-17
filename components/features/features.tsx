@@ -26,6 +26,29 @@ const Features = () => {
       mm.add("(min-width: 900px)", () => {
         gsap.registerPlugin(ScrollTrigger);
 
+        const featuresCards: HTMLDivElement[] = gsap.utils.toArray(
+          "[data-features-card]"
+        );
+
+        ScrollTrigger.create({
+          trigger: featuresCardsTrigger.current,
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          animation: gsap.fromTo(
+            featuresCards[0],
+            {
+              scale: 2,
+            },
+            {
+              scale: 1,
+              autoAlpha: 1,
+              ease: "expo.out",
+              pointerEvents: "auto",
+            }
+          ),
+        });
+
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: featuresCardsTrigger.current,
@@ -33,20 +56,12 @@ const Features = () => {
             end: `+=${window.innerHeight * 5}`,
             scrub: true,
             pin: true,
-            // snap: {
-            //   snapTo: "labelsDirectional",
-            //   duration: { min: 0.2, max: 0.5 },
-            // },
             pinSpacing: true,
           },
         });
 
-        const featuresCards: HTMLDivElement[] = gsap.utils.toArray(
-          "[data-features-card]"
-        );
-
         timeline
-          .set(featuresCards[0], { autoAlpha: 1, pointerEvents: "auto" })
+          // .set(featuresCards[0], { autoAlpha: 1, pointerEvents: "auto" })
           .addLabel("0", ">");
 
         featuresCards.forEach((card, idx) => {
