@@ -23,14 +23,14 @@ const Hero = () => {
   return (
     <section id="home">
       <div
-        className="relative w-full min-h-[95vh] px-5 sm:px-10 overflow-hidden"
+        className="relative w-full px-5 sm:px-10 overflow-hidden"
         style={{
           background:
             "linear-gradient(180deg, rgba(128, 47, 209, 0.00) 27.86%, rgba(156, 83, 250, 0.37) 247.43%), #FFF",
         }}
       >
         <PerspectiveGrid />
-        <div className="relative custom-flex-col gap-[120px] justify-between">
+        <div className="relative min-h-[95vh] custom-flex-col gap-[120px] justify-between">
           <div style={{ height: "calc(36px + 60px)" }}></div>
           <div className="custom-flex-col gap-10">
             <div className="flex justify-center">
