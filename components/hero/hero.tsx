@@ -1,15 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Inter_Tight } from "next/font/google";
 
 // Imports
 import clsx from "clsx";
+import gsap from "gsap";
 import CTA from "../cta/cta";
+import { useGSAP } from "@gsap/react";
 import HeroMockup from "./hero-mockup";
 import HeroPreview from "./hero-preview";
 import { hero_slider_text } from "./data";
 import HeroTextSlider from "./hero-text-slider";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PerspectiveGrid } from "../global-components";
 import { useLandingPageContext } from "../landing-page-context";
 import { HeroCloudSeparator, LaunchVideoButton } from "./hero-components";
@@ -18,11 +21,47 @@ import { benefits_arc_height, section_heading_text_styles } from "@/app/config";
 const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
 const Hero = () => {
+  // Constants
+  const hero_preview_aspect_ratio = 1.6;
+
+  // Hooks
   const { openLaunchVideo } = useLandingPageContext();
+
+  // Refs
+  const heroRef = useRef<HTMLDivElement>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
+
+  // Functions
+  const getHeight = (width: number) => width / hero_preview_aspect_ratio;
+
+  // Animation
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 900px)", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      ScrollTrigger.create({
+        trigger: heroRef.current,
+        start: "bottom bottom",
+        end: `+=${getHeight((window.innerWidth / 5) * 2)}`,
+        pin: true,
+        pinSpacing: false,
+      });
+
+      ScrollTrigger.create({
+        trigger: previewRef.current,
+        start: "bottom bottom",
+        pin: true,
+        pinSpacing: false,
+      });
+    });
+  });
 
   return (
     <section id="home">
       <div
+        ref={heroRef}
         className="relative w-full px-5 sm:px-10 overflow-hidden"
         style={{
           background:
@@ -73,8 +112,12 @@ const Hero = () => {
         </div>
       </div>
       <HeroCloudSeparator />
-      <div className="relative overflow-hidden">
-        <div className="absolute z-[1] top-2/4 left-0 w-full h-full">
+      <div ref={previewRef} className="relative overflow-hidden bg-white">
+        <div
+          data-dots-bg
+          className="absolute z-[1] inset-0 w-full h-full"
+        ></div>
+        <div className="absolute z-[2] top-2/4 left-0 w-full h-full">
           <div
             className="w-full h-full"
             style={{
@@ -83,7 +126,7 @@ const Hero = () => {
             }}
           ></div>
         </div>
-        <div className="relative z-[2] w-full min-h-screen custom-flex-col gap-[100px] sm:gap-[224px] justify-between">
+        <div className="relative z-[3] w-full min-h-screen custom-flex-col gap-[100px] sm:gap-[224px] justify-between">
           <div></div>
           <div className="flex justify-center">
             <div className="custom-flex-col gap-10 md:gap-[56px]">

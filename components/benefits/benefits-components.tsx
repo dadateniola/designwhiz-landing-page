@@ -14,6 +14,7 @@ export const BenefitsArcSeparator = () => (
       )}
     >
       <div
+        data-benefits-arc
         className="absolute top-0 left-2/4 -translate-x-2/4 w-[106%] h-[300%] bg-white rounded-t-[100%]"
         style={{
           boxShadow: "0px 4px 12px 0px rgba(226, 227, 242, 0.50) inset",

@@ -71,7 +71,7 @@ const LandingPage = () => {
           <Features />
         </main>
         <Footer className="z-[2]" />
-        <div id="dot-bg" className="fixed z-[1] inset-0 w-full h-full"></div>
+        <div data-dots-bg className="fixed z-[1] inset-0 w-full h-full"></div>
       </SmoothScroll>
     </LandingPageContext.Provider>
   );

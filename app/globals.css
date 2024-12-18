@@ -9,7 +9,11 @@
 }
 
 /* Layout styles */
-#dot-bg {
+section {
+  position: relative;
+}
+
+[data-dots-bg] {
   opacity: 20%;
   pointer-events: none;
   background: url("/images/dot.png") 0% 0% / 8px 8px repeat, #fff;
