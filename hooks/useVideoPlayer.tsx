@@ -153,32 +153,46 @@ export const useVideoPlayer = ({
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const handleFullscreen = () => {
-    const video = videoRef.current as any; // Using `any` to avoid TS errors
+    const video = videoRef.current as any;
 
-    if (!document.fullscreenElement) {
-      // Enter fullscreen
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      } else if (video.mozRequestFullScreen) {
-        video.mozRequestFullScreen();
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
+    if (!video) return;
+
+    try {
+      if (!document.fullscreenElement) {
+        // Enter fullscreen
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          // iOS Safari-specific
+          video.webkitEnterFullscreen();
+        } else if (video.mozRequestFullScreen) {
+          video.mozRequestFullScreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        } else {
+          console.warn("Fullscreen API is not supported in this browser.");
+        }
+      } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          (document as any).webkitExitFullscreen();
+        } else if ((document as any).mozCancelFullScreen) {
+          (document as any).mozCancelFullScreen();
+        } else if ((document as any).msExitFullscreen) {
+          (document as any).msExitFullscreen();
+        } else {
+          console.warn("Exit fullscreen is not supported in this browser.");
+        }
       }
-    } else {
-      // Exit fullscreen
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
-      } else if ((document as any).mozCancelFullScreen) {
-        (document as any).mozCancelFullScreen();
-      } else if ((document as any).msExitFullscreen) {
-        (document as any).msExitFullscreen();
-      }
+    } catch (error) {
+      console.error("Error attempting to enter fullscreen mode:", error);
     }
   };
+
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
   // Keyboard controls with brief controls visibility
