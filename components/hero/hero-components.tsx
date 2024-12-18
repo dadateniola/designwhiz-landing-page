@@ -180,9 +180,10 @@ export const HeroMockupPreviewLoader: React.FC<{ className?: string }> = ({
   </div>
 );
 
-export const HeroMockupPreviewError: React.FC<{ className?: string }> = ({
-  className,
-}) => (
+export const HeroMockupPreviewError: React.FC<{
+  type?: "image" | "video";
+  className?: string;
+}> = ({ type = "image", className }) => (
   <div
     className={clsx(
       "absolute inset-0 w-full h-full flex items-center justify-center",
@@ -190,7 +191,7 @@ export const HeroMockupPreviewError: React.FC<{ className?: string }> = ({
     )}
   >
     <p className="text-text-sub text-sm font-medium text-center">
-      Failed to load image 😔
+      Failed to load {type} 😔
     </p>
   </div>
 );

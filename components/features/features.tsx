@@ -157,7 +157,7 @@ const Features = () => {
           ref={featuresCardsTrigger}
           className={clsx(
             "relative navbar:h-screen",
-            "custom-flex-col gap-20 md:gap-[120px] navbar:gap-0"
+            "custom-flex-col gap-[20vh] navbar:gap-0"
           )}
         >
           {features_data.map((feature, idx) => (

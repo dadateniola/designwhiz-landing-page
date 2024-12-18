@@ -60,7 +60,7 @@ export const BenefitsCardList: React.FC<BenefitsCardListProps> = ({ list }) => (
 
 export const BenefitsCardVideoOverlay = () => (
   <div
-    className="absolute z-[2] inset-0 w-full h-full rounded-[14px]"
+    className="absolute inset-0 w-full h-full rounded-[14px]"
     style={{
       boxShadow:
         "0px 0px 0px 2px rgba(219, 219, 219, 0.38) inset, 0px 4px 2px 0px rgba(0, 0, 0, 0.06) inset, 0px 0px 24px 4px rgba(0, 0, 0, 0.04) inset",

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 // Types
 import type { BenefitsCardProps } from "./types";
@@ -13,6 +13,11 @@ import {
   BenefitsCardList,
   BenefitsCardVideoOverlay,
 } from "./benefits-components";
+import {
+  HeroMockupPreviewError,
+  HeroMockupPreviewLoader,
+} from "../hero/hero-components";
+import clsx from "clsx";
 
 const BenefitsCard: React.FC<BenefitsCardProps> = ({
   list = [],
@@ -20,23 +25,29 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
   heading,
   subheading,
 }) => {
+  // States
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   // Refs
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Functions
-  const handleEnter = () => {
+  const handleEnter = useCallback(() => {
     const video = videoRef.current;
-    if (video) video.play();
-  };
+    if (video && !loading && !error) {
+      video.play();
+    }
+  }, [error, loading]);
 
-  const handleLeave = () => {
+  const handleLeave = useCallback(() => {
     const video = videoRef.current;
-    if (video) {
+    if (video && !loading && !error) {
       video.pause();
       video.currentTime = 0;
     }
-  };
+  }, [error, loading]);
 
   // Effects
   useEffect(() => {
@@ -55,13 +66,20 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
     observer.observe(container);
 
     return () => observer.disconnect();
+  }, [handleEnter, handleLeave]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && video.readyState >= 1) {
+      setLoading(false);
+    }
   }, []);
 
   return (
     <div
       ref={containerRef}
       data-benefits-card
-      className="navbar:absolute w-full p-4 pb-6 rounded-3xl bg-white will-change-transform"
+      className="navbar:absolute w-full p-4 pb-6 rounded-3xl bg-white navbar:will-change-transform"
       style={{
         backdropFilter: "blur(6px)",
         boxShadow:
@@ -86,11 +104,18 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
             muted
             playsInline
             ref={videoRef}
-            className="relative z-[1] w-full h-full object-cover"
+            onError={() => setError(true)}
+            onLoadedMetadata={() => setLoading(false)}
+            className={clsx("w-full h-full object-cover transition-opacity duration-300", {
+              "opacity-0 invisible": loading,
+              hidden: error,
+            })}
           >
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          {loading && !error && <HeroMockupPreviewLoader />}
+          {error && <HeroMockupPreviewError type="video" />}
           <BenefitsCardVideoOverlay />
         </div>
         <div className="navbar:hidden custom-flex-col gap-4">
