@@ -60,7 +60,7 @@ const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
         }}
       ></div>
       <div className="relative z-[2] w-full h-full px-4 xs:px-6 flex items-center justify-center">
-        <div className="custom-flex-col gap-6 navbar:max-w-[min(80vw,1100px)]">
+        <div className="custom-flex-col gap-6 w-full navbar:max-w-[min(80vw,1100px)]">
           <div className="flex gap-3 justify-end navbar:justify-center">
             <SectionLabel icon={false} style={{ height: 35 }}>
               DesignWhiz launch video
@@ -79,7 +79,7 @@ const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
           </div>
           <div
             className={clsx(
-              "w-full h-full overflow-hidden",
+              "w-full h-full aspect-video overflow-hidden",
               "rounded-2xl md:rounded-3xl lg:rounded-[34px]"
             )}
             style={{

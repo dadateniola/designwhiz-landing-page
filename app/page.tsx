@@ -64,7 +64,7 @@ const LandingPage = () => {
       <SmoothScroll ref={smoothScrollRef}>
         {showLaunchVideo && <LaunchVideo className="z-10" />}
         <Navbar className="z-[4]" />
-        <main className="relative z-[3] w-dvw overflow-x-hidden overflow-y-auto">
+        <main className="relative z-[3] w-dvw overflow-x-hidden">
           <Hero />
           <Benefits />
           <Testimonials />

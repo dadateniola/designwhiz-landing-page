@@ -75,6 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     <header
       ref={navbarRef}
       style={{
+        willChange: "width",
         backdropFilter: "blur(16px)",
         border: "1px solid rgba(0, 0, 0, 0.10)",
         background: "rgba(255, 255, 255, 0.85)",
