@@ -29,6 +29,8 @@ import StreaksVeteran from "@/public/images/features/streaks-veteran.png";
 import StreaksMaestro from "@/public/images/features/streaks-maestro.png";
 import StreaksExplorer from "@/public/images/features/streaks-explorer.png";
 import StreaksTrendsetter from "@/public/images/features/streaks-trendsetter.png";
+// ------ Others ------
+import { FeaturesRocket } from "../svg/svg";
 
 export const FeedFeatures = () => (
   <div className="w-full relative pr-[26px]">
@@ -192,4 +194,23 @@ export const StreaksFeatures = () => (
       className="w-[9%] absolute top-[14%] left-0"
     />
   </div>
+);
+
+export const SubscribeNowButton = () => (
+  <button
+    className="py-2 px-4 rounded-full"
+    style={{
+      boxShadow:
+        "0px 2px 5px 0px rgba(0, 0, 0, 0.08), 0px 35px 16px 0px rgba(0, 0, 0, 0.01)",
+      background:
+        "linear-gradient(165deg, #A02BE4 0%, rgba(0, 0, 0, 0.00) 28%, rgba(0, 0, 0, 0.00) 72%, #4F46E5 100%), #09090B",
+    }}
+  >
+    <div className="flex items-center gap-2">
+      <FeaturesRocket />
+      <p className="text-white text-base font-normal leading-6 -tracking-[0.48px]">
+        Subscribe now
+      </p>
+    </div>
+  </button>
 );

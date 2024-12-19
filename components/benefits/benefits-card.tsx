@@ -79,7 +79,7 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
     <div
       ref={containerRef}
       data-benefits-card
-      className="navbar:absolute w-full p-4 pb-6 rounded-3xl bg-white navbar:will-change-transform"
+      className="navbar:absolute w-full max-w-[1280px] p-4 pb-6 rounded-3xl bg-white navbar:will-change-transform"
       style={{
         backdropFilter: "blur(6px)",
         boxShadow:
@@ -98,7 +98,7 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
             Get Started
           </CTA>
         </div>
-        <div className="relative flex-1 aspect-video navbar:aspect-square bg-neutral-100 rounded-[14px] overflow-hidden">
+        <div className="relative flex-1 aspect-video navbar:aspect-[4/3] bg-neutral-100 rounded-[14px] overflow-hidden">
           <video
             loop
             muted

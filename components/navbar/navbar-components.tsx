@@ -12,11 +12,11 @@ export const NavbarLink: React.FC<NavbarLinkProps> = ({
   <Link
     href={href}
     className={clsx(
-      "navbar-link py-[6px] px-[13px] rounded-full duration-300 group",
+      "navbar-link py-[6px] px-[13px] rounded-full duration-150",
       { active }
     )}
   >
-    <p className="text-text-weak hover:text-text-soft text-sm font-medium capitalize -tracking-[0.28px] leading-5">
+    <p className="text-text-weak text-sm font-medium capitalize -tracking-[0.28px] leading-5">
       {children}
     </p>
   </Link>

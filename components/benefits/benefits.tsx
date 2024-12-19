@@ -90,23 +90,23 @@ const Benefits = () => {
             <h1
               className={clsx(
                 inter_tight.className,
-                "text-text-black max-w-[626px]",
+                "text-text-black max-w-[500px] md:max-w-[430px] lg:max-w-[530px]",
                 section_heading_text_styles
               )}
             >
               We know you deserve better.
             </h1>
             <p className="text-text-sub text-sm sm:text-base lg:text-lg font-normal text-center">
-              Not just another Dribbble or Behance. You
+              Not just another Dribbble or Behance. Designwhiz
               <br />
-              deserve much more!
+              is a creative sanctuary for your design journey
             </p>
           </div>
           <div
             ref={benefitsCardsTrigger}
             className={clsx(
               "relative flex flex-col gap-16 md:gap-20 navbar:gap-0",
-              "navbar:h-screen navbar:flex-row navbar:items-center"
+              "navbar:h-screen navbar:flex-row navbar:items-center navbar:justify-center"
             )}
           >
             {benefits_data.map((benefit, idx) => (

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 // Types
 import type { NavbarProps } from "./types";
@@ -11,6 +11,7 @@ import { DesignWhizLogo } from "../svg/svg";
 // Imports
 import clsx from "clsx";
 import gsap from "gsap";
+import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import NavbarLinks from "./navbar-links";
 import { NavbarCTA } from "./navbar-components";
@@ -18,10 +19,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   // Constants
+  const threshold = 200;
   const max_navbar_width = 960;
   const navbar_percentage = 85;
 
   // Refs
+  const lastScrollRef = useRef(0);
+  const scrollDeltaRef = useRef(0);
+  const startValueRef = useRef(0);
   const isRetractedRef = useRef(false);
   const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -34,10 +39,67 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       : `${navbar_percentage}%`;
   };
 
+  const animateNavbarWidth = (width: string) => {
+    const navbar = navbarRef.current;
+
+    if (navbar) {
+      const timeline = gsap.timeline();
+
+      timeline
+        .call(() => {
+          navbar.style.transitionDuration = "0s";
+        })
+        .to(navbar, {
+          width,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+        .call(() => {
+          navbar.style.transitionDuration = "500ms";
+        });
+    }
+  };
+
   const handleResize = () => {
     const navbar = navbarRef.current;
     const isRetracted = isRetractedRef.current;
     if (navbar && !isRetracted) navbar.style.width = calculateWidth();
+  };
+  const handleScroll = () => {
+    const navbar = navbarRef.current;
+
+    // I know, I also dont understand whatever is happening here 😅
+    // But it works 😉
+    if (navbar && isRetractedRef.current) {
+      const currentScroll =
+        window.scrollY || document.documentElement.scrollTop;
+
+      // Ignore calculations before the start value
+      if (currentScroll < startValueRef.current) {
+        lastScrollRef.current = currentScroll; // Keep updating lastScrollRef
+        return;
+      }
+
+      // Adjust calculations to start from the start value
+      const adjustedScroll = currentScroll - startValueRef.current;
+      const adjustedLastScroll = lastScrollRef.current - startValueRef.current;
+
+      if (adjustedScroll > adjustedLastScroll) {
+        scrollDeltaRef.current += adjustedScroll - adjustedLastScroll;
+        if (scrollDeltaRef.current > threshold) {
+          navbar.classList.add("navbar-hidden");
+          scrollDeltaRef.current = 0;
+        }
+      } else {
+        scrollDeltaRef.current += adjustedLastScroll - adjustedScroll;
+        if (scrollDeltaRef.current > threshold) {
+          navbar.classList.remove("navbar-hidden");
+          scrollDeltaRef.current = 0;
+        }
+      }
+
+      lastScrollRef.current = currentScroll <= 0 ? 0 : currentScroll;
+    }
   };
 
   useGSAP(() => {
@@ -47,19 +109,15 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       trigger: "#navbar-trigger",
       start: "top center",
       onEnter: () => {
-        gsap.to(navbarRef.current, {
-          width: "auto",
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        animateNavbarWidth("auto");
+
+        startValueRef.current =
+          (window.scrollY || document.documentElement.scrollTop) +
+          window.innerHeight / 2;
         isRetractedRef.current = true;
       },
       onLeaveBack: () => {
-        gsap.to(navbarRef.current, {
-          width: calculateWidth(),
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        animateNavbarWidth(calculateWidth());
         isRetractedRef.current = false;
       },
     });
@@ -71,35 +129,49 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     };
   });
 
+  useEffect(() => {
+    const navbar = navbarRef.current;
+
+    if (navbar) {
+      navbar.style.width = calculateWidth();
+      navbar.classList.remove("navbar-hidden");
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <header
       ref={navbarRef}
       style={{
-        willChange: "width",
         backdropFilter: "blur(16px)",
         border: "1px solid rgba(0, 0, 0, 0.10)",
         background: "rgba(255, 255, 255, 0.85)",
-        width: `min(${max_navbar_width}px, ${navbar_percentage}%)`,
       }}
       className={clsx(
-        "fixed top-5 left-2/4 -translate-x-2/4 p-2 pl-4 flex gap-7 justify-between rounded-full",
+        "navbar-hidden",
+        "p-2 pl-4 flex gap-7 justify-between rounded-full overflow-hidden",
         className
       )}
     >
-      <div className="flex gap-2 items-center">
+      <Link href="" className="flex gap-2 items-center">
         <DesignWhizLogo />
         <p className="text-text-black text-base font-medium -tracking-[0.48px] leading-6">
           DesignWhiz
         </p>
-      </div>
+      </Link>
       <div className="hidden navbar:flex items-center gap-6">
         <NavbarLinks />
         <div className="flex items-center">
-          <NavbarCTA>Create account</NavbarCTA>
+          <NavbarCTA>Get started</NavbarCTA>
         </div>
       </div>
       <div className="flex navbar:hidden items-center">
-        <NavbarCTA>Sign up</NavbarCTA>
+        <NavbarCTA>Get started</NavbarCTA>
       </div>
     </header>
   );
