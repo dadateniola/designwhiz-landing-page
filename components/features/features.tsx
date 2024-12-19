@@ -57,9 +57,7 @@ const Features = () => {
           },
         });
 
-        timeline
-          // .set(featuresCards[0], { autoAlpha: 1, pointerEvents: "auto" })
-          .addLabel("0", ">");
+        timeline.addLabel("0", ">");
 
         featuresCards.forEach((card, idx) => {
           const cardSelector = gsap.utils.selector(card);
