@@ -50,7 +50,7 @@ const Features = () => {
           scrollTrigger: {
             trigger: featuresCardsTrigger.current,
             start: "top top",
-            end: `+=${window.innerHeight * 5}`,
+            end: `+=${window.innerHeight}`,
             scrub: true,
             pin: true,
             pinSpacing: true,
@@ -77,7 +77,7 @@ const Features = () => {
               .from(
                 cardSelector("[data-features-card-preview] img"),
                 {
-                  x: "-70vw",
+                  x: "-60vw",
                   stagger: 0.05,
                   ease: "expo.out",
                 },
@@ -96,15 +96,17 @@ const Features = () => {
                 },
                 "+=0.5"
               )
-              .to(
-                cardSelector("[data-features-card-preview] img"),
-                {
-                  x: "-70vw",
-                  stagger: 0.05,
-                },
-                "<"
-              )
+              .to(cardSelector("[data-features-card-preview] img"), {
+                x: "-70vw",
+                stagger: 0.05,
+              })
               .set(card, { autoAlpha: 0, pointerEvents: "none" });
+          } else {
+            timeline.to(card, {
+              scale: 2,
+              autoAlpha: 0,
+              pointerEvents: "none",
+            });
           }
         });
       });
@@ -138,7 +140,7 @@ const Features = () => {
             "custom-flex-col gap-[20vh] navbar:gap-0"
           )}
         >
-          {features_data.map((feature, idx) => (
+          {features_data.slice(0, 2).map((feature, idx) => (
             <FeaturesCard key={idx} data={feature} />
           ))}
         </div>

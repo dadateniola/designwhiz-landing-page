@@ -14,6 +14,7 @@ export interface SectionLabelProps {
   children: React.ReactNode;
 }
 
-export interface PerspectiveGridProps {
+export interface PerspectiveGridProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   style?: CSSProperties;
 }

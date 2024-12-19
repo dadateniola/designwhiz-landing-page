@@ -15,3 +15,5 @@ export interface FooterCircleProps {
   y: number;
   size: number;
 }
+
+export type FooterGradientProps = React.HTMLAttributes<HTMLDivElement>;

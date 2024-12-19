@@ -12,6 +12,7 @@ import { FooterPlane } from "../svg/svg";
 const FooterAvatar: React.FC<FooterAvatarProps> = ({ x, y, src }) => {
   return (
     <div
+      data-footer-avatar
       className="absolute"
       style={{
         top: `${y}%`,
@@ -22,7 +23,7 @@ const FooterAvatar: React.FC<FooterAvatarProps> = ({ x, y, src }) => {
       <div
         className="aspect-square bg-white border-2 border-white rounded-full overflow-hidden"
         style={{
-          width: "clamp(30px, 5vw, 60px)",
+          width: "clamp(40px, 5vw, 60px)",
         }}
       >
         <Image
@@ -35,7 +36,7 @@ const FooterAvatar: React.FC<FooterAvatarProps> = ({ x, y, src }) => {
       <div
         className={clsx(
           "absolute top-0 right-[2px] md:right-1 lg:right-[7px] -rotate-[4deg] flex items-center justify-center",
-          "[&>svg]:w-[8px] [&>svg]:h-[8px] md:[&>svg]:w-[10px] md:[&>svg]:h-w-[10px] lg:[&>svg]:w-auto lg:[&>svg]:h-auto"
+          "[&>svg]:w-[10px] [&>svg]:h-w-[10px] md:[&>svg]:w-auto md:[&>svg]:h-auto"
         )}
       >
         <div

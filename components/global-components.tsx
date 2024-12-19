@@ -6,6 +6,7 @@ import type { PerspectiveGridProps, SectionLabelProps } from "./types";
 // Images
 import { LabelStar } from "./svg/svg";
 import PerspectiveGridImage from "@/public/images/perspective-grid.png";
+import clsx from "clsx";
 
 export const SectionLabel: React.FC<SectionLabelProps> = ({
   style,
@@ -25,8 +26,16 @@ export const SectionLabel: React.FC<SectionLabelProps> = ({
   </div>
 );
 
-export const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({ style }) => (
-  <div className="absolute top-0 left-0 w-full h-[90vh]" style={style}>
+export const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({
+  style,
+  className,
+  ...props
+}) => (
+  <div
+    className={clsx("absolute top-0 left-0 w-full h-[90vh]", className)}
+    style={style}
+    {...props}
+  >
     <Image
       src={PerspectiveGridImage}
       alt="perspective grid"
