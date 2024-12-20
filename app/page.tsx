@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Types
 import type { SmoothScrollRef } from "@/components/smooth scroll/types";
@@ -27,6 +27,7 @@ const LandingPage = () => {
   const smoothScrollRef = useRef<SmoothScrollRef>(null);
 
   // Functions
+  const scrollToTop = () => smoothScrollRef.current?.scrollToTop();
   const enableScroll = () => {
     document.body.style.overflowY = "auto";
     smoothScrollRef.current?.enableScroll();
@@ -51,6 +52,18 @@ const LandingPage = () => {
         setShowLaunchVideo(false);
       });
   };
+
+  // Effects
+  useEffect(() => {
+    scrollToTop();
+    window.scrollTo(0, 0);
+
+    document
+      .querySelectorAll("section:not(#home),section#home > *:not(:first-child)")
+      .forEach((elem) => {
+        (elem as HTMLElement).style.opacity = "1";
+      });
+  }, []);
 
   return (
     <LandingPageContext.Provider

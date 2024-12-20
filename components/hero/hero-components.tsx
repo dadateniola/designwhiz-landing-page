@@ -3,6 +3,7 @@ import { CSSProperties } from "react";
 
 // Types
 import type {
+  HeroGradientProps,
   HeroMockupIconsProps,
   HeroPreviewImageProps,
   LaunchVideoButtonProps,
@@ -210,7 +211,7 @@ export const HeroPreviewImage: React.FC<HeroPreviewImageProps> = ({
   const { error, loaded } = states;
 
   return (
-    <div className={clsx("relative bg-neutral-50", containerClassName)}>
+    <div data-hero-preview className={clsx("relative bg-neutral-50", containerClassName)}>
       <Image
         src={src}
         alt={alt}
@@ -231,3 +232,19 @@ export const HeroPreviewImage: React.FC<HeroPreviewImageProps> = ({
     </div>
   );
 };
+
+export const HeroGradient: React.FC<HeroGradientProps> = ({
+  style,
+  className,
+  ...props
+}) => (
+  <div
+    className={clsx("absolute inset-0 w-full h-full", className)}
+    style={{
+      background:
+        "linear-gradient(180deg, rgba(128, 47, 209, 0.00) 27.86%, rgba(156, 83, 250, 0.37) 247.43%), #FFF",
+      ...style,
+    }}
+    {...props}
+  ></div>
+);

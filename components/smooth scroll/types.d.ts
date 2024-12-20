@@ -3,6 +3,7 @@ export interface SmoothScrollProps {
 }
 
 export interface SmoothScrollRef {
+  scrollToTop: () => void;
   enableScroll: () => void;
   disableScroll: () => void;
 }

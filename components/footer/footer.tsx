@@ -33,6 +33,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
       });
 
       timeline
+        .set(footerRef.current, { autoAlpha: 1 })
         .from("[data-footer-avatar]", {
           autoAlpha: 0,
           stagger: 0.1,
@@ -61,7 +62,14 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
   );
 
   return (
-    <footer ref={footerRef} className={clsx("relative h-screen", className)}>
+    <footer
+      ref={footerRef}
+      className={clsx(
+        "relative h-[calc(100vh+50px)]",
+        "opacity-0 invisible", // Hidden by default for animation
+        className
+      )}
+    >
       <FooterGradient data-footer-gradient />
       <PerspectiveGrid data-footer-grid style={{ height: "50vh" }} />
       <div className="relative w-full h-full">

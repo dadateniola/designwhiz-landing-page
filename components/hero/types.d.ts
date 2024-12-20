@@ -54,3 +54,5 @@ export interface HeroPreviewImageProps {
   onLoad: () => void;
   onError: () => void;
 }
+
+export type HeroGradientProps = React.HTMLAttributes<HTMLDivElement>;

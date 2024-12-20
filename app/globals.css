@@ -13,6 +13,11 @@ section {
   position: relative;
 }
 
+section:not(#home),
+section#home > *:not(:first-child) {
+  opacity: 0;
+}
+
 [data-dots-bg] {
   opacity: 20%;
   pointer-events: none;
@@ -90,7 +95,7 @@ header {
   left: 50%;
   transform: translateX(-50%);
   transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.65,0,0.35,1);
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 header.navbar-hidden {

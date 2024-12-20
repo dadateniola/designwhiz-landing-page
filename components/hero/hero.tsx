@@ -15,7 +15,13 @@ import HeroTextSlider from "./hero-text-slider";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PerspectiveGrid } from "../global-components";
 import { useLandingPageContext } from "../landing-page-context";
-import { HeroCloudSeparator, LaunchVideoButton } from "./hero-components";
+
+import {
+  HeroGradient,
+  LaunchVideoButton,
+  HeroCloudSeparator,
+} from "./hero-components";
+
 import { benefits_arc_height, section_heading_text_styles } from "@/app/config";
 
 const inter_tight = Inter_Tight({ subsets: ["latin"] });
@@ -56,22 +62,57 @@ const Hero = () => {
         pinSpacing: false,
       });
     });
+
+    const timeline = gsap.timeline();
+
+    timeline
+      .set(heroRef.current, { autoAlpha: 1 })
+      .fromTo(
+        "[data-hero-text]",
+        {
+          scale: 1.2,
+          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+        },
+        {
+          delay: 1,
+          scale: 1,
+          duration: 1,
+          ease: "expo.out",
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        }
+      )
+      .call(() => {
+        const navbar = document.querySelector("header");
+        if (navbar) navbar.classList.remove("navbar-hidden");
+      })
+      .from("[data-hero-preview]", {
+        yPercent: 100,
+        ease: "power2.out",
+      })
+      .from(
+        "[data-hero-gradient], [data-hero-grid]",
+        {
+          autoAlpha: 0,
+        },
+        "<"
+      );
   });
 
   return (
     <section id="home">
       <div
+        data-hero
         ref={heroRef}
-        className="relative w-full px-5 sm:px-10 overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(128, 47, 209, 0.00) 27.86%, rgba(156, 83, 250, 0.37) 247.43%), #FFF",
-        }}
+        className={clsx(
+          "relative w-full px-5 sm:px-10 overflow-hidden",
+          "opacity-0 invisible" // Hidden by default for animation
+        )}
       >
-        <PerspectiveGrid />
+        <HeroGradient data-hero-gradient />
+        <PerspectiveGrid data-hero-grid />
         <div className="relative min-h-[95vh] custom-flex-col gap-[120px] justify-between">
           <div style={{ height: "calc(36px + 60px)" }}></div>
-          <div className="custom-flex-col gap-10">
+          <div data-hero-text className="custom-flex-col gap-10">
             <div className="flex justify-center">
               <LaunchVideoButton onClick={openLaunchVideo} />
             </div>
@@ -98,7 +139,7 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-center sm:flex-row justify-center gap-[14px]">
+              <div className="pb-1 flex flex-col items-center sm:flex-row justify-center gap-[14px]">
                 <CTA type="dark" className="w-[280px] sm:w-[192px] h-10">
                   explore designwhiz
                 </CTA>

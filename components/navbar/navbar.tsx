@@ -132,10 +132,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   useEffect(() => {
     const navbar = navbarRef.current;
 
-    if (navbar) {
-      navbar.style.width = calculateWidth();
-      navbar.classList.remove("navbar-hidden");
-    }
+    if (navbar) navbar.style.width = calculateWidth();
 
     window.addEventListener("scroll", handleScroll);
 
