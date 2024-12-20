@@ -50,7 +50,7 @@ const Features = () => {
           scrollTrigger: {
             trigger: featuresCardsTrigger.current,
             start: "top top",
-            end: `+=${window.innerHeight}`,
+            end: `+=${window.innerHeight * 10}`,
             scrub: true,
             pin: true,
             pinSpacing: true,
@@ -138,7 +138,7 @@ const Features = () => {
             "custom-flex-col gap-[20vh] navbar:gap-0"
           )}
         >
-          {features_data.slice(0, 2).map((feature, idx) => (
+          {features_data.map((feature, idx) => (
             <FeaturesCard key={idx} data={feature} />
           ))}
         </div>
