@@ -6,6 +6,8 @@ import type { PerspectiveGridProps, SectionLabelProps } from "./types";
 // Images
 import { LabelStar } from "./svg/svg";
 import PerspectiveGridImage from "@/public/images/perspective-grid.png";
+
+// Imports
 import clsx from "clsx";
 
 export const SectionLabel: React.FC<SectionLabelProps> = ({

@@ -98,7 +98,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               <br />
               can belong.
             </h2>
-            <div className="flex justify-center">
+            <div className="pb-1 flex justify-center">
               <CTA
                 type="dark"
                 className="py-[10px] px-10 2xl:w-[302px]"

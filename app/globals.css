@@ -88,6 +88,15 @@ section#home > *:not(:first-child) {
   -webkit-text-fill-color: transparent;
 }
 
+a:hover .twinkles,
+button:hover .twinkles {
+  opacity: 1;
+}
+
+.twinkles img:nth-child(even) {
+  transform: rotate(180deg);
+}
+
 /* Navbar styles */
 header {
   position: fixed;
