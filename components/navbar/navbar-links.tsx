@@ -39,8 +39,13 @@ const NavbarLinks = () => {
 
   return (
     <nav className="flex items-center gap-1">
-      {Object.entries(navbar_links).map(([text, href]) => (
-        <NavbarLink key={text} href={href} active={activeSection === text}>
+      {Object.entries(navbar_links).map(([text, { href, external }]) => (
+        <NavbarLink
+          key={text}
+          href={href}
+          external={external}
+          active={activeSection === text}
+        >
           {text}
         </NavbarLink>
       ))}

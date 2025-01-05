@@ -8,13 +8,12 @@ import type { FooterProps } from "./types";
 // Imports
 import clsx from "clsx";
 import gsap from "gsap";
-import CTA from "../cta/cta";
 import { useGSAP } from "@gsap/react";
 import { footer_avatars } from "./data";
 import FooterAvatar from "./footer-avatar";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PerspectiveGrid } from "../global-components";
-import { FooterGradient } from "./footer-components";
+import { FooterCTA, FooterGradient } from "./footer-components";
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
   // Refs
@@ -98,14 +97,13 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               <br />
               can belong.
             </h2>
-            <div className="pb-1 flex justify-center">
-              <CTA
-                type="dark"
-                className="py-[10px] px-10 2xl:w-[302px]"
-                style={{ fontWeight: "normal" }}
-              >
-                See Designwhiz in action
-              </CTA>
+            {/* PC CTA */}
+            <div className="pb-1 hidden navbar:flex justify-center">
+              <FooterCTA>See Designwhiz in action</FooterCTA>
+            </div>
+            {/* Mobile CTA */}
+            <div className="pb-1 flex navbar:hidden justify-center">
+              <FooterCTA>Be a part of the Community</FooterCTA>
             </div>
           </div>
         </div>

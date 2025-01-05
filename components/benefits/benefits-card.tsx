@@ -121,7 +121,7 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
         <div className="navbar:hidden custom-flex-col gap-4">
           <div></div>
           <CTA type="black" className="py-[14px]" style={{ fontSize: "16px" }}>
-            Get Started
+            Join Now
           </CTA>
         </div>
       </div>

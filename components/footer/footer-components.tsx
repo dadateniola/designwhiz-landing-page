@@ -1,6 +1,13 @@
 // Types
+import type {
+  FooterCTAProps,
+  FooterCircleProps,
+  FooterGradientProps,
+} from "./types";
+
+// Imports
 import clsx from "clsx";
-import type { FooterCircleProps, FooterGradientProps } from "./types";
+import CTA from "../cta/cta";
 
 export const FooterCircle: React.FC<FooterCircleProps> = ({ x, y, size }) => (
   <div
@@ -29,4 +36,15 @@ export const FooterGradient: React.FC<FooterGradientProps> = ({
     }}
     {...props}
   ></div>
+);
+
+export const FooterCTA: React.FC<FooterCTAProps> = ({ children }) => (
+  <CTA
+    type="dark"
+    normalCase
+    style={{ fontWeight: "normal" }}
+    className="py-[10px] px-10 2xl:w-[302px]"
+  >
+    {children}
+  </CTA>
 );

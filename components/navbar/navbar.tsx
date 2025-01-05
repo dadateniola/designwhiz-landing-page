@@ -168,7 +168,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         </div>
       </div>
       <div className="flex navbar:hidden items-center">
-        <NavbarCTA>Get started</NavbarCTA>
+        <NavbarCTA>Join</NavbarCTA>
       </div>
     </header>
   );

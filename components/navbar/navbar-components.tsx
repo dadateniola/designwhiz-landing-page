@@ -10,20 +10,27 @@ import Twinkles from "../twinkles/twinkles";
 export const NavbarLink: React.FC<NavbarLinkProps> = ({
   href,
   active,
+  external,
   children,
-}) => (
-  <Link
-    href={href}
-    className={clsx(
-      "navbar-link py-[6px] px-[13px] rounded-full duration-150",
-      { active }
-    )}
-  >
+}) => {
+  const class_style =
+    "navbar-link py-[6px] px-[13px] rounded-full duration-150";
+  const content = (
     <p className="text-text-weak text-sm font-medium capitalize -tracking-[0.28px] leading-5">
       {children}
     </p>
-  </Link>
-);
+  );
+
+  return external ? (
+    <a href={href} className={class_style} target="_blank">
+      {content}
+    </a>
+  ) : (
+    <Link href={href} className={clsx(class_style, { active })}>
+      {content}
+    </Link>
+  );
+};
 
 export const NavbarCTA: React.FC<NavbarCTAProps> = ({ children }) => (
   <Link

@@ -112,7 +112,7 @@ const Hero = () => {
         <PerspectiveGrid data-hero-grid />
         <div className="relative min-h-[95vh] custom-flex-col gap-[120px] justify-between">
           <div style={{ height: "calc(36px + 60px)" }}></div>
-          <div data-hero-text className="custom-flex-col gap-10">
+          <div data-hero-text className="custom-flex-col gap-10 pb-1">
             <div className="flex justify-center">
               <LaunchVideoButton onClick={openLaunchVideo} />
             </div>
@@ -139,12 +139,17 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              <div className="pb-1 flex flex-col items-center sm:flex-row justify-center gap-[14px]">
+              <div className="hidden navbar:flex flex-col items-center sm:flex-row justify-center gap-[14px]">
                 <CTA type="dark" className="w-[280px] sm:w-[192px] h-10">
                   explore designwhiz
                 </CTA>
                 <CTA type="purple" className="w-[280px] sm:w-[192px] h-10">
                   create an account
+                </CTA>
+              </div>
+              <div className="flex justify-center navbar:hidden">
+                <CTA normalCase type="purple" className="w-[min(95%,280px)] h-10">
+                  Become a part of DesignWhiz
                 </CTA>
               </div>
             </div>

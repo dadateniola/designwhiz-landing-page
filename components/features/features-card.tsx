@@ -5,8 +5,8 @@ import type { FeaturesCardProps } from "./types";
 
 // Imports
 import clsx from "clsx";
-import CTA from "../cta/cta";
 import { SectionLabel } from "../global-components";
+import { FeaturesCardCTA } from "./features-components";
 
 const FeaturesCard: React.FC<FeaturesCardProps> = ({
   data: { desc, title, preview },
@@ -57,10 +57,13 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
                 {desc}
               </p>
             </div>
-            <div className="flex pl-[2px] pb-[2px]">
-              <CTA type="dark" className="py-[10px] w-[192px]">
-                Explore Designwhiz
-              </CTA>
+            {/* PC CTA */}
+            <div className="hidden navbar:flex pl-1 pb-1">
+              <FeaturesCardCTA>Explore Designwhiz</FeaturesCardCTA>
+            </div>
+            {/* Mobile CTA */}
+            <div className="flex navbar:hidden pl-1 pb-1">
+              <FeaturesCardCTA>Join Designwhiz</FeaturesCardCTA>
             </div>
           </div>
         </div>

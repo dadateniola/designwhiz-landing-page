@@ -8,6 +8,7 @@ export interface NavbarProps {
 export interface NavbarLinkProps {
   href: string;
   active?: boolean;
+  external?: boolean;
   children: React.ReactNode;
 }
 

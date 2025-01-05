@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+// Types
+import type { FeaturesCardCTAProps } from "./types";
+
 // Images
 // ------ Feed ------
 import FeedWho from "@/public/images/features/feed-who.png";
@@ -30,6 +33,7 @@ import StreaksMaestro from "@/public/images/features/streaks-maestro.png";
 import StreaksExplorer from "@/public/images/features/streaks-explorer.png";
 import StreaksTrendsetter from "@/public/images/features/streaks-trendsetter.png";
 // ------ Others ------
+import CTA from "../cta/cta";
 import { FeaturesRocket } from "../svg/svg";
 
 export const FeedFeatures = () => (
@@ -213,4 +217,12 @@ export const SubscribeNowButton = () => (
       </p>
     </div>
   </button>
+);
+
+export const FeaturesCardCTA: React.FC<FeaturesCardCTAProps> = ({
+  children,
+}) => (
+  <CTA type="dark" className="py-[10px] w-[192px]">
+    {children}
+  </CTA>
 );

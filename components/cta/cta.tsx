@@ -16,12 +16,14 @@ const CTA: React.FC<CTAProps> = ({
   onClick,
   children,
   className,
+  normalCase,
 }) => {
   const custom_props = {
     style: { ...cta_button_types[type], ...style },
     className: clsx(
       "relative rounded-full flex items-center justify-center",
-      "text-white text-sm font-semibold leading-5 capitalize",
+      "text-white text-sm font-semibold leading-5",
+      { capitalize: !normalCase },
       className
     ),
   };

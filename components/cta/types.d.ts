@@ -10,6 +10,7 @@ export interface CTAProps {
   type: CTAType;
   className?: string;
   onClick?: () => void;
+  normalCase?: boolean;
   style?: CSSProperties;
   children: React.ReactNode;
 }
