@@ -6,18 +6,19 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import type { BenefitsCardProps } from "./types";
 
 // Imports
+import clsx from "clsx";
 import CTA from "../cta/cta";
 
 import {
-  BenefitsCardHeader,
   BenefitsCardList,
+  BenefitsCardHeader,
   BenefitsCardVideoOverlay,
 } from "./benefits-components";
+
 import {
   HeroMockupPreviewError,
   HeroMockupPreviewLoader,
 } from "../hero/hero-components";
-import clsx from "clsx";
 
 const BenefitsCard: React.FC<BenefitsCardProps> = ({
   list = [],
@@ -106,10 +107,13 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
             ref={videoRef}
             onError={() => setError(true)}
             onLoadedMetadata={() => setLoading(false)}
-            className={clsx("w-full h-full object-cover transition-opacity duration-300", {
-              "opacity-0 invisible": loading,
-              hidden: error,
-            })}
+            className={clsx(
+              "w-full h-full object-cover transition-opacity duration-300",
+              {
+                "opacity-0 invisible": loading,
+                hidden: error,
+              }
+            )}
           >
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.

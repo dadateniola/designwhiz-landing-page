@@ -120,7 +120,7 @@ const Features = () => {
           <h1
             className={clsx(
               inter_tight.className,
-              "text-text-black xs:max-w-[min(670px,70vw)]",
+              "text-text-black xs:max-w-[min(650px,60vw)]",
               section_heading_text_styles
             )}
           >

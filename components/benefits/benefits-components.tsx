@@ -28,7 +28,7 @@ export const BenefitsCardHeader: React.FC<BenefitsCardHeaderProps> = ({
   heading,
   subheading,
 }) => (
-  <div className="custom-flex-col gap-3 navbar:gap-1">
+  <div className="custom-flex-col gap-3 ">
     <p
       className={clsx(
         "text-black font-medium leading-[100%]",
