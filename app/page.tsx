@@ -15,11 +15,11 @@ import Features from "@/components/features/features";
 import Testimonials from "@/components/testimonials/testimonials";
 // ------ Others ------
 import gsap from "gsap";
+import { black_hole_media_query } from "./config";
 import HeroBlackHole from "@/components/hero/hero-black-hole";
 import LaunchVideo from "@/components/launch video/launch-video";
 import SmoothScroll from "@/components/smooth scroll/smooth-scroll";
 import { LandingPageContext } from "@/components/landing-page-context";
-import { black_hole_media_query } from "./config";
 
 const LandingPage = () => {
   // States
