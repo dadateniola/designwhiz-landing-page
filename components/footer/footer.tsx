@@ -13,7 +13,14 @@ import { footer_avatars } from "./data";
 import FooterAvatar from "./footer-avatar";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PerspectiveGrid } from "../global-components";
-import { FooterCTA, FooterGradient } from "./footer-components";
+
+import {
+  FooterCTA,
+  FooterGradient,
+  FooterBlackHole,
+} from "./footer-components";
+
+import { black_hole_media_query, black_space_class } from "@/app/config";
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
   // Refs
@@ -27,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: footerRef.current,
-          start: "top top",
+          start: "top center",
         },
       });
 
@@ -56,59 +63,94 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           },
           "<"
         );
+
+      const mm = gsap.matchMedia();
+
+      mm.add(black_hole_media_query, () => {
+        const blackHoleTL = gsap.timeline({
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            pin: true,
+          },
+        });
+
+        blackHoleTL
+          .to("[data-footer-content]", {
+            scale: 0.85,
+          })
+          .to(
+            "[data-footer-black-hole]",
+            {
+              scaleY: 2,
+              ease: "power1.in",
+            },
+            "<"
+          );
+      });
     },
     { scope: footerRef }
   );
 
   return (
-    <footer
-      ref={footerRef}
-      className={clsx(
-        "relative h-[calc(100vh+50px)]",
-        "opacity-0 invisible", // Hidden by default for animation
-        className
-      )}
-    >
-      <FooterGradient data-footer-gradient />
-      <PerspectiveGrid data-footer-grid style={{ height: "50vh" }} />
-      <div className="relative w-full h-full">
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <div className="relative w-[105vw] navbar:w-full h-[70vh] navbar:h-[90vh] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
-            {footer_avatars.map((avatar, idx) => (
-              <FooterAvatar key={idx} {...avatar} />
-            ))}
-          </div>
-        </div>
-        <div className="relative w-full h-full flex items-center justify-center">
-          <div data-footer-text className="custom-flex-col gap-8">
-            <h2
-              className={clsx(
-                "text-[rgba(0,0,0,0.90)] font-medium text-center -tracking-[1.6px]",
-                "text-[34px] xs:text-[40px] sm:text-[50px] xl:text-[60px] 2xl:text-[70px]",
-                "leading-[34px] xs:leading-[40px] sm:leading-[50px] xl:leading-[60px] 2xl:leading-[70px]"
-              )}
-            >
-              This is a space where
-              <br />
-              every <span className="text-purple-base italic">
-                creative
-              </span>{" "}
-              misfit
-              <br />
-              can belong.
-            </h2>
-            {/* PC CTA */}
-            <div className="pb-1 hidden navbar:flex justify-center">
-              <FooterCTA>See Designwhiz in action</FooterCTA>
-            </div>
-            {/* Mobile CTA */}
-            <div className="pb-1 flex navbar:hidden justify-center">
-              <FooterCTA>Be a part of the Community</FooterCTA>
+    <>
+      <footer
+        ref={footerRef}
+        className={clsx(
+          "relative h-[calc(100vh+10px)]",
+          "opacity-0 invisible", // Hidden by default for animation
+          className
+        )}
+      >
+        <FooterGradient data-footer-gradient />
+        <PerspectiveGrid data-footer-grid style={{ height: "50vh" }} />
+        <div data-footer-content className="relative w-full h-full">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <div className="relative w-[105vw] navbar:w-full h-[70vh] navbar:h-[90vh] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
+              {footer_avatars.map((avatar, idx) => (
+                <FooterAvatar key={idx} {...avatar} />
+              ))}
             </div>
           </div>
+          <div className="relative w-full h-full flex items-center justify-center">
+            <div data-footer-text className="custom-flex-col gap-8">
+              <h2
+                className={clsx(
+                  "text-[rgba(0,0,0,0.90)] font-medium text-center -tracking-[1.6px]",
+                  "text-[34px] xs:text-[40px] sm:text-[50px] xl:text-[60px] 2xl:text-[70px]",
+                  "leading-[34px] xs:leading-[40px] sm:leading-[50px] xl:leading-[60px] 2xl:leading-[70px]"
+                )}
+              >
+                This is a space where
+                <br />
+                every <span className="text-purple-base italic">
+                  creative
+                </span>{" "}
+                misfit
+                <br />
+                can belong.
+              </h2>
+              {/* PC CTA */}
+              <div className="pb-1 hidden navbar:flex justify-center">
+                <FooterCTA>See Designwhiz in action</FooterCTA>
+              </div>
+              {/* Mobile CTA */}
+              <div className="pb-1 flex navbar:hidden justify-center">
+                <FooterCTA>Be a part of the Community</FooterCTA>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
+        <FooterBlackHole
+          className="h-screen"
+          data-footer-black-hole
+          style={{ transform: "scaleY(0)" }}
+        />
+      </footer>
+      <div className={clsx("relative hidden navbar:block", black_space_class, className)}></div>
+    </>
   );
 };
 

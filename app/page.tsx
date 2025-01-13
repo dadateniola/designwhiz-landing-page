@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 // Types
 import type { SmoothScrollRef } from "@/components/smooth scroll/types";
@@ -15,9 +15,11 @@ import Features from "@/components/features/features";
 import Testimonials from "@/components/testimonials/testimonials";
 // ------ Others ------
 import gsap from "gsap";
+import HeroBlackHole from "@/components/hero/hero-black-hole";
 import LaunchVideo from "@/components/launch video/launch-video";
 import SmoothScroll from "@/components/smooth scroll/smooth-scroll";
 import { LandingPageContext } from "@/components/landing-page-context";
+import { black_hole_media_query } from "./config";
 
 const LandingPage = () => {
   // States
@@ -27,7 +29,10 @@ const LandingPage = () => {
   const smoothScrollRef = useRef<SmoothScrollRef>(null);
 
   // Functions
-  const scrollToTop = () => smoothScrollRef.current?.scrollToTop();
+  const scrollTo = (position: number) => {
+    smoothScrollRef.current?.scrollTo(position);
+    window.scrollTo(0, position);
+  };
   const enableScroll = () => {
     document.body.style.overflowY = "auto";
     smoothScrollRef.current?.enableScroll();
@@ -53,17 +58,44 @@ const LandingPage = () => {
       });
   };
 
+  const handleScroll = useCallback(() => {
+    if (window.matchMedia(black_hole_media_query).matches) {
+      const buffer = 10;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+
+      if (scrollTop + clientHeight >= scrollHeight - buffer) {
+        scrollTo(buffer);
+      }
+
+      if (scrollTop === 0) {
+        scrollTo(scrollHeight - clientHeight - buffer * 2);
+      }
+    }
+  }, []);
+
   // Effects
   useEffect(() => {
-    scrollToTop();
-    window.scrollTo(0, 0);
+    const minOffset = window.innerHeight * 2 + 20;
+    const homeTop =
+      document.querySelector("section#home")?.getBoundingClientRect().top ?? 0;
+    const offset = Math.max(minOffset, homeTop);
+
+    scrollTo(offset);
 
     document
       .querySelectorAll("section:not(#home),section#home > *:not(:first-child)")
       .forEach((elem) => {
         (elem as HTMLElement).style.opacity = "1";
       });
-  }, []);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
     <LandingPageContext.Provider
@@ -76,7 +108,8 @@ const LandingPage = () => {
     >
       <SmoothScroll ref={smoothScrollRef}>
         {showLaunchVideo && <LaunchVideo className="z-10" />}
-        <Navbar className="z-[4]" />
+        <Navbar className="z-[5]" />
+        <HeroBlackHole className="z-[4]" />
         <main className="relative z-[3] w-dvw overflow-x-hidden">
           <Hero />
           <Benefits />

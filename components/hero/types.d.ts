@@ -56,3 +56,7 @@ export interface HeroPreviewImageProps {
 }
 
 export type HeroGradientProps = React.HTMLAttributes<HTMLDivElement>;
+
+export interface HeroBlackHoleProps {
+  className?: string;
+}

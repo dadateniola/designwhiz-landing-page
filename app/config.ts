@@ -2,8 +2,10 @@ import { Inter_Tight } from "next/font/google";
 
 // Images
 import BlankImage from "@/public/images/empty.svg";
+import BlackHole from "@/public/images/black-hole.png";
 
 export const empty = BlankImage;
+export const black_hole = BlackHole;
 
 export const section_heading_text_styles = [
   "font-medium text-center -tracking-[0.5px]",
@@ -14,3 +16,7 @@ export const section_heading_text_styles = [
 export const benefits_arc_height = "h-[80px] md:h-[120px] xl:h-[190px]";
 
 export const inter_tight = Inter_Tight({ subsets: ["latin"] });
+
+export const black_space_class = "w-full h-[calc(100vh+20px)] bg-black";
+
+export const black_hole_media_query = "(min-width: 900px)";

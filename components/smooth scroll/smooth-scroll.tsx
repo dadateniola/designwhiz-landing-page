@@ -16,8 +16,8 @@ const SmoothScroll = forwardRef<SmoothScrollRef, SmoothScrollProps>(
 
     // Hooks
     useImperativeHandle(ref, () => ({
-      scrollToTop: () =>
-        lenisRef.current?.lenis?.scrollTo(0, {
+      scrollTo: (position) =>
+        lenisRef.current?.lenis?.scrollTo(position, {
           immediate: true,
         }),
       enableScroll: () => lenisRef.current?.lenis?.start(),
