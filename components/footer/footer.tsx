@@ -12,7 +12,6 @@ import { useGSAP } from "@gsap/react";
 import { footer_avatars } from "./data";
 import FooterAvatar from "./footer-avatar";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PerspectiveGrid } from "../global-components";
 
 import {
   FooterCTA,
@@ -20,6 +19,7 @@ import {
   FooterBlackHole,
 } from "./footer-components";
 
+import PerspectiveGrid from "../perspective grid/perspective-grid";
 import { black_hole_media_query, black_space_class } from "@/app/config";
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
@@ -105,7 +105,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         )}
       >
         <FooterGradient data-footer-gradient />
-        <PerspectiveGrid data-footer-grid style={{ height: "50vh" }} />
+        <PerspectiveGrid heightPercent={50} />
         <div data-footer-content className="relative w-full h-full">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="relative w-[105vw] navbar:w-full h-[70vh] navbar:h-[90vh] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
@@ -149,7 +149,13 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           style={{ transform: "scaleY(0)" }}
         />
       </footer>
-      <div className={clsx("relative hidden navbar:block", black_space_class, className)}></div>
+      <div
+        className={clsx(
+          "relative hidden navbar:block",
+          black_space_class,
+          className
+        )}
+      ></div>
     </>
   );
 };

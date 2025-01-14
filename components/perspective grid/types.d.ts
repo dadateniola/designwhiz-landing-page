@@ -1,4 +1,7 @@
-export type PerspectiveGridProps = React.HTMLAttributes<HTMLDivElement>;
+export interface PerspectiveGridProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  heightPercent?: number;
+}
 
 export interface Point {
   x: number;

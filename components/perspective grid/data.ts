@@ -89,7 +89,7 @@ export function getLinePoints(
 
 export function drawLine(
   ctx: CanvasRenderingContext2D,
-  { start, end, color = perspectiveGridLineColor(0.8) }: Line & { color?: string }
+  { start, end, color = perspectiveGridLineColor(0.11) }: Line & { color?: string }
 ) {
   ctx.strokeStyle = color;
   ctx.beginPath();

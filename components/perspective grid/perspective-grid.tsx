@@ -12,6 +12,7 @@ import { drawLine, generateGridLines, getLinePoints } from "./data";
 
 const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({
   className,
+  heightPercent,
   ...props
 }) => {
   // Constants
@@ -23,8 +24,8 @@ const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({
   const delay = duration / 2;
   const perspectivePower = 2;
   const canvasWidthMultiplier = 1.5;
-  const canvasHeightMultiplier = 0.9;
-  const light_line_color = perspectiveGridLineColor(0.2);
+  const canvasHeightMultiplier = heightPercent ? heightPercent / 100 : 0.9;
+  const light_line_color = perspectiveGridLineColor(0.09);
 
   // Refs
   const progress = useRef<number>(0);
@@ -149,7 +150,7 @@ const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({
       line.interpolations = getLinePoints(line.start, line.end, steps);
     });
     drawGrid();
-  }, [drawGrid, calculateGridDimensions]);
+  }, [canvasHeightMultiplier, drawGrid, calculateGridDimensions]);
 
   // Resize handler
   const handleResize = useCallback(() => {
@@ -175,7 +176,7 @@ const PerspectiveGrid: React.FC<PerspectiveGridProps> = ({
   return (
     <div
       className={clsx(
-        "absolute top-0 left-0 w-full h-screen overflow-hidden",
+        "absolute top-0 left-0 w-full h-screen overflow-hidden pointer-events-none",
         className
       )}
       {...props}

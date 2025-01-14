@@ -31,13 +31,14 @@ export const BenefitsCardHeader: React.FC<BenefitsCardHeaderProps> = ({
   <div className="custom-flex-col gap-3 ">
     <p
       className={clsx(
-        "text-black font-medium leading-[100%]",
-        "text-xl lg:text-2xl xl:text-[28px]"
+        "text-black font-medium",
+        "text-xl lg:text-2xl",
+        "leading-[20px] lg:leading-[28px]"
       )}
     >
       {heading}
     </p>
-    <p className="text-neutral-200 text-base font-normal">{subheading}</p>
+    <p className="text-neutral-200 text-sm font-normal">{subheading}</p>
   </div>
 );
 
@@ -46,7 +47,7 @@ export const BenefitsCardList: React.FC<BenefitsCardListProps> = ({ list }) => (
     {list.map(({ desc, title }, idx) => (
       <div key={idx} className="flex gap-3">
         <div className="flex items-start w-[18px]">
-          <p className="text-text-soft text-sm font-medium">
+          <p className="text-text-soft text-sm leading-6 font-medium">
             {`${idx + 1}`.padStart(2, "0")}
           </p>
         </div>
