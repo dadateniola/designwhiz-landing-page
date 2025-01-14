@@ -77,6 +77,10 @@ const LandingPage = () => {
 
   // Effects
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     const minOffset = window.innerHeight * 2 + 20;
     const homeTop =
       document.querySelector("section#home")?.getBoundingClientRect().top ?? 0;
@@ -94,6 +98,9 @@ const LandingPage = () => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
     };
   }, [handleScroll]);
 
