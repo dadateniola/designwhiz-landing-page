@@ -134,7 +134,9 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               </h2>
               {/* PC CTA */}
               <div className="pb-1 hidden navbar:flex justify-center">
-                <FooterCTA>See Designwhiz in action</FooterCTA>
+                <FooterCTA href="https://www.mydesignwhiz.com/frames">
+                  See Designwhiz in action
+                </FooterCTA>
               </div>
               {/* Mobile CTA */}
               <div className="pb-1 flex navbar:hidden justify-center">

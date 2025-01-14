@@ -42,13 +42,13 @@ export const FooterGradient: React.FC<FooterGradientProps> = ({
   ></div>
 );
 
-export const FooterCTA: React.FC<FooterCTAProps> = ({ children }) => (
+export const FooterCTA: React.FC<FooterCTAProps> = ({ href, children }) => (
   <CTA
     type="dark"
+    href={href}
     normalCase
     style={{ fontWeight: "normal" }}
     className="py-[10px] px-10 2xl:w-[302px]"
-    href="https://www.mydesignwhiz.com/frames"
   >
     {children}
   </CTA>

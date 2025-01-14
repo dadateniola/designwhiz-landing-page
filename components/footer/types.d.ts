@@ -20,5 +20,6 @@ export type FooterGradientProps = React.HTMLAttributes<HTMLDivElement>;
 export type FooterBlackHoleProps = React.HTMLAttributes<HTMLDivElement>;
 
 export interface FooterCTAProps {
+  href?: string;
   children: React.ReactNode;
 }
