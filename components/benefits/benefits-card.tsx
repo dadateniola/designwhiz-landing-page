@@ -95,7 +95,11 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
               <BenefitsCardList list={list} />
             </div>
           </div>
-          <CTA type="black" className="hidden navbar:flex py-[10px]">
+          <CTA
+            type="black"
+            className="hidden navbar:flex py-[10px]"
+            href="https://www.mydesignwhiz.com/frames"
+          >
             Get Started
           </CTA>
         </div>

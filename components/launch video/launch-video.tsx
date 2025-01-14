@@ -79,7 +79,7 @@ const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
           </div>
           <div
             className={clsx(
-              "w-full h-full aspect-video overflow-hidden",
+              "w-full h-full aspect-video overflow-hidden bg-neutral-100",
               "rounded-2xl md:rounded-3xl lg:rounded-[34px]"
             )}
             style={{
@@ -87,7 +87,7 @@ const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
             }}
           >
             <VideoPlayer
-              src="/videos/launch video/launch video.mp4"
+              src="https://res.cloudinary.com/dr1jj9cad/video/upload/v1736860105/Launch_Video_short_gwg7k4.mp4"
               options={{
                 maxHeight: "80vh",
                 disableKeyActions: isCustom,

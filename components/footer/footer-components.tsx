@@ -48,6 +48,7 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ children }) => (
     normalCase
     style={{ fontWeight: "normal" }}
     className="py-[10px] px-10 2xl:w-[302px]"
+    href="https://www.mydesignwhiz.com/frames"
   >
     {children}
   </CTA>

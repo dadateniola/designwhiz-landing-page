@@ -59,7 +59,9 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
             </div>
             {/* PC CTA */}
             <div className="hidden navbar:flex pl-1 pb-1">
-              <FeaturesCardCTA>Explore Designwhiz</FeaturesCardCTA>
+              <FeaturesCardCTA href="https://www.mydesignwhiz.com/frames">
+                Explore Designwhiz
+              </FeaturesCardCTA>
             </div>
             {/* Mobile CTA */}
             <div className="flex navbar:hidden pl-1 pb-1">

@@ -13,6 +13,7 @@ export interface NavbarLinkProps {
 }
 
 export interface NavbarCTAProps {
+  href: string;
   children: React.ReactNode;
 }
 

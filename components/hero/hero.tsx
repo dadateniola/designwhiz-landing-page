@@ -140,10 +140,18 @@ const Hero = () => {
                 </div>
               </div>
               <div className="hidden navbar:flex flex-col items-center sm:flex-row justify-center gap-[14px]">
-                <CTA type="dark" className="w-[280px] sm:w-[192px] h-10">
+                <CTA
+                  type="dark"
+                  className="w-[280px] sm:w-[192px] h-10"
+                  href="https://www.mydesignwhiz.com/frames"
+                >
                   explore designwhiz
                 </CTA>
-                <CTA type="purple" className="w-[280px] sm:w-[192px] h-10">
+                <CTA
+                  type="purple"
+                  className="w-[280px] sm:w-[192px] h-10"
+                  href="https://www.mydesignwhiz.com/auth?state=signup"
+                >
                   create an account
                 </CTA>
               </div>

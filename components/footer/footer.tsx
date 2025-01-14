@@ -105,7 +105,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         )}
       >
         <FooterGradient data-footer-gradient />
-        <PerspectiveGrid heightPercent={50} />
+        <PerspectiveGrid data-footer-grid heightPercent={50} />
         <div data-footer-content className="relative w-full h-full">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="relative w-[105vw] navbar:w-full h-[70vh] navbar:h-[90vh] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">

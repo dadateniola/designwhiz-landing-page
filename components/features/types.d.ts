@@ -9,5 +9,6 @@ export interface FeaturesCardProps {
 }
 
 export interface FeaturesCardCTAProps {
+  href?: string;
   children: React.ReactNode;
 }

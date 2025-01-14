@@ -32,9 +32,10 @@ export const NavbarLink: React.FC<NavbarLinkProps> = ({
   );
 };
 
-export const NavbarCTA: React.FC<NavbarCTAProps> = ({ children }) => (
-  <Link
-    href={""}
+export const NavbarCTA: React.FC<NavbarCTAProps> = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
     className="relative pt-[9px] pb-3 px-5 bg-neutral-700 rounded-full border border-solid border-blue-900 whitespace-nowrap"
     style={{
       boxShadow:
@@ -43,5 +44,5 @@ export const NavbarCTA: React.FC<NavbarCTAProps> = ({ children }) => (
   >
     <p className="text-white text-base font-medium leading-5">{children}</p>
     <Twinkles />
-  </Link>
+  </a>
 );

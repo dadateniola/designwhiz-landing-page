@@ -164,11 +164,13 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       <div className="hidden navbar:flex items-center gap-6">
         <NavbarLinks />
         <div className="flex items-center">
-          <NavbarCTA>Get started</NavbarCTA>
+          <NavbarCTA href="https://www.mydesignwhiz.com/frames">
+            Get started
+          </NavbarCTA>
         </div>
       </div>
       <div className="flex navbar:hidden items-center">
-        <NavbarCTA>Join</NavbarCTA>
+        <NavbarCTA href="">Join</NavbarCTA>
       </div>
     </header>
   );

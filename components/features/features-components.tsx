@@ -220,9 +220,10 @@ export const SubscribeNowButton = () => (
 );
 
 export const FeaturesCardCTA: React.FC<FeaturesCardCTAProps> = ({
+  href,
   children,
 }) => (
-  <CTA type="dark" className="py-[10px] w-[192px]">
+  <CTA type="dark" href={href} className="py-[10px] w-[192px]">
     {children}
   </CTA>
 );

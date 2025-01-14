@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 // Types
 import type { CTAProps } from "./types";
@@ -29,10 +28,10 @@ const CTA: React.FC<CTAProps> = ({
   };
 
   return href ? (
-    <Link href={href} {...custom_props}>
+    <a href={href} target="_blank" {...custom_props}>
       {children}
       <Twinkles />
-    </Link>
+    </a>
   ) : (
     <button onClick={onClick} {...custom_props}>
       {children}
