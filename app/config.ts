@@ -20,3 +20,6 @@ export const inter_tight = Inter_Tight({ subsets: ["latin"] });
 export const black_space_class = "w-full h-[calc(100vh+20px)] bg-black";
 
 export const black_hole_media_query = "(min-width: 900px)";
+
+export const perspectiveGridLineColor = (opacity: number) =>
+  `rgba(146, 99, 168, ${opacity})`;

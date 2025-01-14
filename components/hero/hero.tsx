@@ -13,7 +13,6 @@ import HeroPreview from "./hero-preview";
 import { hero_slider_text } from "./data";
 import HeroTextSlider from "./hero-text-slider";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PerspectiveGrid } from "../global-components";
 import { useLandingPageContext } from "../landing-page-context";
 
 import {
@@ -22,6 +21,7 @@ import {
   HeroCloudSeparator,
 } from "./hero-components";
 
+import PerspectiveGrid from "../perspective grid/perspective-grid";
 import { benefits_arc_height, section_heading_text_styles } from "@/app/config";
 
 const inter_tight = Inter_Tight({ subsets: ["latin"] });
@@ -148,7 +148,11 @@ const Hero = () => {
                 </CTA>
               </div>
               <div className="flex justify-center navbar:hidden">
-                <CTA normalCase type="purple" className="w-[min(95%,280px)] h-10">
+                <CTA
+                  normalCase
+                  type="purple"
+                  className="w-[min(95%,280px)] h-10"
+                >
                   Become a part of DesignWhiz
                 </CTA>
               </div>
