@@ -106,6 +106,14 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
       >
         <FooterGradient data-footer-gradient />
         <PerspectiveGrid data-footer-grid heightPercent={50} />
+        <div
+          data-footer-gradient
+          className="absolute top-[50vh] left-0 -translate-y-[98%] w-full h-[50px]"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgb(246, 242, 254, 0), #F5F0FE)",
+          }}
+        ></div>
         <div data-footer-content className="relative w-full h-full">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="relative w-[105vw] navbar:w-full h-[70vh] navbar:h-[90vh] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
