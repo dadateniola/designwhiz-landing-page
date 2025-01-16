@@ -117,7 +117,7 @@ const LandingPage = () => {
         {showLaunchVideo && <LaunchVideo className="z-10" />}
         <Navbar className="z-[5]" />
         <HeroBlackHole className="z-[4]" />
-        <main className="relative z-[3] w-dvw overflow-x-hidden">
+        <main className="relative z-[3] w-full overflow-x-hidden">
           <Hero />
           <Benefits />
           <Testimonials />

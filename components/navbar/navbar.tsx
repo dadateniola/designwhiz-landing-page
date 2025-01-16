@@ -155,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         className
       )}
     >
-      <Link href="" className="flex gap-2 items-center">
+      <Link href="#home" className="flex gap-2 items-center">
         <DesignWhizLogo />
         <p className="text-text-black text-base font-medium -tracking-[0.48px] leading-6">
           DesignWhiz
@@ -164,8 +164,8 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       <div className="hidden navbar:flex items-center gap-6">
         <NavbarLinks />
         <div className="flex items-center">
-          <NavbarCTA href="https://www.mydesignwhiz.com/frames">
-            Get started
+          <NavbarCTA href="https://www.mydesignwhiz.com/auth?state=signup">
+            Create account
           </NavbarCTA>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default function RootLayout({
       </head>
       <body
         className={clsx(
-          "w-dvw min-h-screen overflow-x-hidden overflow-y-auto",
+          "w-screen min-h-screen overflow-x-hidden overflow-y-auto",
           inter.className
         )}
       >

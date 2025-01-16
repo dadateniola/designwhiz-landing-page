@@ -20,7 +20,7 @@ const HeroMockup = () => {
       <div className="flex flex-col items-center gap-6 md:gap-12">
         <div
           className="p-2 bg-white rounded-2xl"
-          style={{ width: "min(918px, 90dvw)" }}
+          style={{ width: "min(918px, 90vw)" }}
         >
           <div
             className="w-full border border-solid border-[#F2F2F2] bg-background-canvas rounded-lg overflow-hidden"
