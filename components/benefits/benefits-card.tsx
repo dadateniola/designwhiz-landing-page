@@ -100,7 +100,7 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
             className="hidden navbar:flex py-[10px]"
             href="https://www.mydesignwhiz.com/frames"
           >
-            Get Started
+            Check It Out
           </CTA>
         </div>
         <div className="relative flex-1 aspect-video navbar:aspect-[4/3] bg-neutral-100 rounded-[14px] overflow-hidden">

@@ -165,7 +165,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <NavbarLinks />
         <div className="flex items-center">
           <NavbarCTA href="https://www.mydesignwhiz.com/auth?state=signup">
-            Create account
+            Create Account
           </NavbarCTA>
         </div>
       </div>
