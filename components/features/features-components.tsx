@@ -73,7 +73,7 @@ export const FramesFeatures = () => (
       className="relative w-[60%] rounded-lg"
       style={{
         boxShadow:
-          "-281.943px -155.627px 90.026px 0px rgba(0, 0, 0, 0.00), -180.75px -99.797px 82.35px 0px rgba(0, 0, 0, 0.00), -101.192px -55.83px 69.788px 0px rgba(0, 0, 0, 0.01), -45.362px -25.124px 51.643px 0px rgba(0, 0, 0, 0.02), -11.166px -6.281px 28.613px 0px rgba(0, 0, 0, 0.03)",
+          "281.943px 155.627px 90.026px 0px rgba(0, 0, 0, 0.01), 180.75px 99.797px 82.35px 0px rgba(0, 0, 0, 0.01), 65.008px 58.338px 72.193px 0px rgba(0, 0, 0, 0.04), -101.192px -55.83px 69.788px 0px rgba(0, 0, 0, 0.01), -45.362px -25.124px 51.643px 0px rgba(0, 0, 0, 0.02), -11.166px -6.281px 28.613px 0px rgba(0, 0, 0, 0.03)",
       }}
     />
   </div>
