@@ -79,13 +79,14 @@ const LaunchVideo: React.FC<LaunchVideoProps> = ({ className }) => {
           </div>
           <div
             className={clsx(
-              "w-full h-full aspect-video overflow-hidden bg-neutral-100",
+              "relative w-full h-full aspect-video overflow-hidden",
               "rounded-2xl md:rounded-3xl lg:rounded-[34px]"
             )}
             style={{
               boxShadow: "0px 4px 12px 0px rgba(226, 227, 242, 0.50)",
             }}
           >
+            <div className="absolute inset-0 w-full h-full bg-neutral-100 animate-pulse"></div>
             <VideoPlayer
               src="https://res.cloudinary.com/dr1jj9cad/video/upload/v1736860105/Launch_Video_short_gwg7k4.mp4"
               options={{

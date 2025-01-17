@@ -3,7 +3,10 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 
 // Types
-import { UseVideoPlayerReturnType } from "@/components/VideoPlayer/types";
+import {
+  VideoPlayerStates,
+  UseVideoPlayerReturnType,
+} from "@/components/VideoPlayer/types";
 
 // Imports
 import gsap from "gsap";
@@ -19,22 +22,14 @@ export const useVideoPlayer = ({
   };
 }): UseVideoPlayerReturnType => {
   // States
-  const [state, setState] = useState<{
-    duration: number;
-    currentTime: number;
-
-    isMuted: boolean;
-    isPlaying: boolean;
-    playedOnce: boolean;
-
-    aspectRatio: number | null;
-  }>({
+  const [state, setState] = useState<VideoPlayerStates>({
     duration: 0,
     currentTime: 0,
 
     isMuted: !!muted,
     isPlaying: false,
     playedOnce: false,
+    isBuffering: false,
 
     aspectRatio: null,
   });
@@ -51,6 +46,7 @@ export const useVideoPlayer = ({
   }, [controls.alwaysVisible]);
 
   // Refs
+  const isBuffering = useRef<boolean>(false);
   const isMouseMoving = useRef<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const controlsRef = useRef<HTMLDivElement | null>(controls.element);
@@ -73,13 +69,14 @@ export const useVideoPlayer = ({
   // Function to hide controls with optional delay
   const hideControls = useCallback(
     (force = false) => {
-      if (alwaysShowControls) return;
+      if (alwaysShowControls || isBuffering.current) return;
 
       const delay = 1000;
       const isPlaying = force || state.isPlaying;
       if (controlsRef.current && isPlaying) {
         if (hideTimeout.current) clearTimeout(hideTimeout.current);
         hideTimeout.current = setTimeout(() => {
+          if (alwaysShowControls || isBuffering.current) return;
           gsap.to(controlsRef.current, { opacity: 0, duration: 0.3 });
           if (controlsRef.current)
             controlsRef.current.classList.add("no-cursor"); // Hide cursor
@@ -289,6 +286,33 @@ export const useVideoPlayer = ({
       }
     };
 
+    const handleBuffering = () => {
+      if (video && !video.paused) {
+        // Only set buffering to true if the video is not paused
+        setState((prev) => ({
+          ...prev,
+          isBuffering: true,
+        }));
+        isBuffering.current = true;
+      }
+    };
+
+    const handleTimeUpdate = () => {
+      // Clear buffering if video progresses, even if paused
+      if (
+        video &&
+        video.currentTime > 0 &&
+        !video.seeking &&
+        isBuffering.current
+      ) {
+        setState((prev) => ({
+          ...prev,
+          isBuffering: false,
+        }));
+        isBuffering.current = false;
+      }
+    };
+
     if (controls) {
       controls.addEventListener("mousemove", handleMouseMove);
     }
@@ -297,6 +321,8 @@ export const useVideoPlayer = ({
       video.addEventListener("play", handlePlay);
       video.addEventListener("pause", handlePause);
       video.addEventListener("volumechange", handleVolumeChange);
+      video.addEventListener("waiting", handleBuffering);
+      video.addEventListener("timeupdate", handleTimeUpdate);
     }
 
     return () => {

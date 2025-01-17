@@ -1,11 +1,16 @@
-export type UseVideoPlayerReturnType = {
+export interface VideoPlayerStates {
   duration: number;
   currentTime: number;
+
   isMuted: boolean;
   isPlaying: boolean;
   playedOnce: boolean;
-  aspectRatio: number | null;
+  isBuffering: boolean;
 
+  aspectRatio: number | null;
+}
+
+export interface UseVideoPlayerReturnType extends VideoPlayerStates {
   videoRef: React.RefObject<HTMLVideoElement | null>;
 
   showControls: () => void;
@@ -18,7 +23,7 @@ export type UseVideoPlayerReturnType = {
   handleTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   updateCurrentTime: () => void;
   handleLoadedMetadata: () => void;
-};
+}
 
 export type VideoPlayerContextProps = UseVideoPlayerReturnType;
 
