@@ -159,13 +159,13 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           style={{ transform: "scaleY(0)" }}
         />
       </footer>
-      <div
+      <section
         className={clsx(
           "relative hidden navbar:block",
           black_space_class,
           className
         )}
-      ></div>
+      ></section>
     </>
   );
 };

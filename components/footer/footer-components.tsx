@@ -58,7 +58,7 @@ export const FooterBlackHole: React.FC<FooterBlackHoleProps> = ({
   className,
   ...props
 }) => (
-  <div className="relative w-full h-0">
+  <section className="relative w-full h-0">
     <div
       className={clsx(
         "absolute left-0 bottom-[-5px] w-full origin-bottom",
@@ -68,5 +68,5 @@ export const FooterBlackHole: React.FC<FooterBlackHoleProps> = ({
     >
       <Image src={black_hole} alt="black hole" fill />
     </div>
-  </div>
+  </section>
 );

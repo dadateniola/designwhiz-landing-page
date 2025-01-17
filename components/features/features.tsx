@@ -99,13 +99,29 @@ const Features = () => {
                 stagger: 0.05,
               })
               .set(card, { autoAlpha: 0, pointerEvents: "none" });
-          } else {
-            timeline.to(card, {
+          }
+        });
+
+        ScrollTrigger.create({
+          trigger: featuresCards[featuresCards.length - 1],
+          pinnedContainer: featuresCardsTrigger.current,
+          start: "bottom bottom",
+          end: "bottom top",
+          scrub: true,
+          animation: gsap.fromTo(
+            featuresCards[featuresCards.length - 1],
+            {
+              scale: 1,
+              autoAlpha: 1,
+              pointerEvents: "auto",
+            },
+            {
               scale: 2,
               autoAlpha: 0,
+              ease: "expo.out",
               pointerEvents: "none",
-            });
-          }
+            }
+          ),
         });
       });
     },
