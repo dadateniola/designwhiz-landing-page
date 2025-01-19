@@ -961,3 +961,21 @@ export const VideoVolumeX: React.FC<SVGProps> = ({
     />
   </svg>
 );
+
+export const TestimonialChevron: React.FC<SVGProps> = ({
+  size = 12,
+  color = "#6C50E0",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 12 12"
+    fill="none"
+  >
+    <path
+      d="M1.35254 6.05499L6.78643 11.4889L7.87321 10.4021L3.5261 6.05499L7.87321 1.70787L6.78643 0.621094L1.35254 6.05499Z"
+      fill={color}
+    />
+  </svg>
+);

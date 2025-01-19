@@ -2,6 +2,9 @@
 
 import React from "react";
 
+// Images
+import { TestimonialChevron } from "../svg/svg";
+
 // Imports
 import clsx from "clsx";
 import { testimonials_data } from "./data";
@@ -11,11 +14,12 @@ import { inter_tight, section_heading_text_styles } from "@/app/config";
 // ----- Swiper -----
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Pagination } from "swiper/modules";
+import { Mousewheel, Pagination, Navigation } from "swiper/modules";
 
 const Testimonials = () => {
-  //Functions
+  // Functions
   const isOdd = (num: number) => num % 2 !== 0;
 
   return (
@@ -41,7 +45,16 @@ const Testimonials = () => {
             mousewheel
             spaceBetween={12}
             slidesPerView={"auto"}
-            modules={[Mousewheel, Pagination]}
+            navigation={{
+              nextEl: "[data-testimonial-slider-next]",
+              prevEl: "[data-testimonial-slider-prev]",
+            }}
+            pagination={{
+              type: "bullets",
+              clickable: true,
+              el: "[data-testimonial-slider-pagination]",
+            }}
+            modules={[Mousewheel, Pagination, Navigation]}
             style={{ padding: "12px 0" }}
           >
             {testimonials_data.map((testimonial, idx) => (
@@ -57,7 +70,23 @@ const Testimonials = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        {/* <div></div> */}
+        <div className="flex justify-center">
+          <div className="flex gap-4">
+            <button
+              data-testimonial-slider-prev
+              className="p-1 rounded-full bg-[#F6F5FF]"
+            >
+              <TestimonialChevron />
+            </button>
+            <div data-testimonial-slider-pagination></div>
+            <button
+              data-testimonial-slider-next
+              className="p-1 rounded-full bg-[#F6F5FF] -scale-x-[1]"
+            >
+              <TestimonialChevron />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

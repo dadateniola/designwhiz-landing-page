@@ -289,6 +289,15 @@ input[type="range"].video-player-range:hover::-webkit-slider-thumb {
   transform: translate(-50%, -50%);
 }
 
+/* Testimonial styles */
+.swiper-pagination-bullet {
+  background: rgba(109, 80, 224, 0.6) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgb(109, 80, 224) !important;
+}
+
 /* Restricted Hovers */
 @media (hover: hover) {
   a:hover .twinkles,
